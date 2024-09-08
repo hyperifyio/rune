@@ -69,4 +69,8 @@ Then create files like `HelloWorld.yml`:
         - "app.startButton.label"
 ```
 
-Then run `make build` and you'll get single `app.json` with all the data.
+Then run `make build` and you'll get single `app.json` with all the data. 
+
+You can then serve this JSON throught your API to your ReactJS app to render the content for the end user. 
+
+**Unfortunately,** we haven't published the client library as an open source library yet, since this project is under heavy development. Because of that it's only available for commercial customers with a contract at the moment. You can contact sales@hg.fi for a deal -- and that means for any kind of programming platform you may have, not just ReactJS/TypeScript.
