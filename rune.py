@@ -116,7 +116,10 @@ def parse_html_element(element):
     if element.attrs:
         for attr, value in element.attrs.items():
             if attr == 'class':
-                result['classes'] = value
+                if isinstance(value, list):
+                    result['classes'] = value
+                elif isinstance(value, str):
+                    result['classes'] = value.split()
             elif attr == 'onClick':
                 # Assuming onClick attribute contains JSON string
                 try:
