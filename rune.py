@@ -151,7 +151,7 @@ def parse_html_element(element):
 
 
 def html_to_data_structure(html_content):
-    soup = BeautifulSoup(html_content, 'html.parser')
+    soup = BeautifulSoup(html_content, 'lxml-xml')
     root_elements = soup.find_all(recursive=False)
     data_structure = [parse_html_element(el) for el in root_elements]
     return data_structure
