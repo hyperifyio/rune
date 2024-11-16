@@ -34,7 +34,7 @@ Create a directory `./translations` and files for each translation named like
 
 Then create files like `HelloWorld.yml`:
 
-```
+```yaml
 - type: "View"
   name: "HelloWorld"
   body:
@@ -67,6 +67,26 @@ Then create files like `HelloWorld.yml`:
         - "start-button"
         body:
         - "app.startButton.label"
+```
+
+You can also use HTML, `HelloWorld.html`:
+
+```html
+<View name="HelloWorld">
+  <div class="hello-world-container">
+    <div class="header">
+      <h1>app.title</h1>
+    </div>
+    <div class="content">
+      <p>app.content</p>
+    </div>
+    <div class="footer">
+      <button class="start-button" 
+              onClick='{"navigate":"/app/start"}'
+      >app.startButton.label</button>
+    </div>
+  </div>
+</View>
 ```
 
 Then run `make build` and you'll get single `app.json` with all the data. 

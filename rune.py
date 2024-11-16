@@ -10,15 +10,19 @@ import argparse
 import json
 from typing import List, Dict, Any
 from collections import defaultdict
+from bs4 import BeautifulSoup
+
 
 # Load the translation file
 def load_translation(language_code):
     with open(f"{language_code}.json", "r") as f:
         return json.load(f)
 
+
 # Translate key
 def translate(key, translations):
     return translations.get(key, f"[{key} not found]")
+
 
 # Merge YAML files to single list
 def merge_yaml_files(yaml_files: List[str]) -> List[Dict[str, Any]]:
@@ -32,6 +36,7 @@ def merge_yaml_files(yaml_files: List[str]) -> List[Dict[str, Any]]:
                 raise ValueError(f"YAML file {file} does not contain a list at the root level.")
     return merged_data
 
+
 # Merge JSON files to single list
 def merge_json_files(yaml_files: List[str]) -> List[Dict[str, Any]]:
     merged_data = []
@@ -43,6 +48,7 @@ def merge_json_files(yaml_files: List[str]) -> List[Dict[str, Any]]:
             else:
                 raise ValueError(f"JSON file {file} does not contain a list at the root level.")
     return merged_data
+
 
 # Embed images mentioned in the YAML
 def embed_images(data: List[Dict[str, Any]], base_dir: str) -> List[Dict[str, Any]]:
@@ -69,6 +75,7 @@ def embed_images(data: List[Dict[str, Any]], base_dir: str) -> List[Dict[str, An
         embed_image_property(obj)
 
     return data
+
 
 def get_all_translations(language_dir: str) -> Dict[str, Dict[str, Any]]:
     """
@@ -100,20 +107,84 @@ def get_all_translations(language_dir: str) -> Dict[str, Dict[str, Any]]:
 
     return translations_by_language
 
+
+def parse_html_element(element):
+    result = {}
+    result['type'] = element.name
+
+    # Handle attributes
+    if element.attrs:
+        for attr, value in element.attrs.items():
+            if attr == 'class':
+                result['classes'] = value
+            elif attr == 'onClick':
+                # Assuming onClick attribute contains JSON string
+                try:
+                    result['onClick'] = json.loads(value)
+                except json.JSONDecodeError:
+                    result['onClick'] = value
+            else:
+                result[attr] = value
+
+    # Handle children
+    children = []
+    for child in element.contents:
+        if isinstance(child, str):
+            text = child.strip()
+            if text:
+                children.append(text)
+        else:
+            children.append(parse_html_element(child))
+    if children:
+        result['body'] = children
+
+    return result
+
+
+def html_to_data_structure(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    root_elements = soup.find_all(recursive=False)
+    data_structure = [parse_html_element(el) for el in root_elements]
+    return data_structure
+
+
+def merge_html_files(html_files: List[str]) -> List[Dict[str, Any]]:
+    merged_data = []
+    for file in html_files:
+        with open(file, 'r') as f:
+            html_content = f.read()
+            data = html_to_data_structure(html_content)
+            merged_data.extend(data)
+    return merged_data
+
+
 # Merge all YAML files in a directory into a single array and print it as JSON or YAML
 def main(directory: str, output_type: str, language_dir: str):
 
     # Get all .yml files in the directory
     yaml_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.yml')]
-    if not yaml_files:
-        print(f"No .yml files found in the directory: {directory}", file=sys.stderr)
+
+    # Get all .html files in the directory
+    html_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.html')]
+
+    if not yaml_files and not html_files:
+        print(f"No .yml or .html files found in the directory: {directory}", file=sys.stderr)
         return
 
     try:
 
         translations = get_all_translations(language_dir)
 
-        merged_data = merge_yaml_files(yaml_files)
+        # Merge YAML and HTML data
+        merged_data = []
+        if yaml_files:
+            yaml_data = merge_yaml_files(yaml_files)
+            merged_data.extend(yaml_data)
+
+        if html_files:
+            html_data = merge_html_files(html_files)
+            merged_data.extend(html_data)
+
         embedded_data = embed_images(merged_data, directory)
 
         # Structure the output in the desired format
@@ -133,6 +204,7 @@ def main(directory: str, output_type: str, language_dir: str):
 
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
+
 
 if __name__ == "__main__":
 
