@@ -65,7 +65,7 @@ def embed_images(data: List[Dict[str, Any]], base_dir: str) -> List[Dict[str, An
                 if os.path.isfile(image_path):
                     with open(image_path, 'rb') as image_file:
                         encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
-                        mime_type = "image/" + os.path.splitext(image_path)[1][1:]  # e.g., "image/png"
+                        mime_type = get_data_url_mime_type(os.path.splitext(image_path)[1][1:])
                         data_url = f"data:{mime_type};base64,{encoded_string}"
                         item[key] = data_url
                 else:
@@ -75,6 +75,12 @@ def embed_images(data: List[Dict[str, Any]], base_dir: str) -> List[Dict[str, An
         embed_image_property(obj)
 
     return data
+
+
+def get_data_url_mime_type (type: str) -> str:
+    if type.startswith("svg"):
+        return "image/svg+xml"
+    return "image/" + type
 
 
 def get_all_translations(language_dir: str) -> Dict[str, Dict[str, Any]]:
