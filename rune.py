@@ -60,7 +60,7 @@ def embed_images(data: List[Dict[str, Any]], base_dir: str) -> List[Dict[str, An
                 for sub_item in value:
                     if isinstance(sub_item, dict):
                         embed_image_property(sub_item)
-            elif (key == 'image' or key == 'src') and isinstance(value, str):
+            elif (key == 'image' or key.endswith('Image') or key.startswith('Image') or key == 'src') and isinstance(value, str):
                 image_path = os.path.join(base_dir, value)
                 if os.path.isfile(image_path):
                     with open(image_path, 'rb') as image_file:
