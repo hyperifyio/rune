@@ -1,6 +1,6 @@
 # rune
 
-Rune -- Dynamic YML content builder
+Rune -- Statically dynamic (HTML/YML/JSON) content builder
 
 ## Usage
 
