@@ -191,6 +191,9 @@ def merge_html_files(html_files: List[str]) -> List[Dict[str, Any]]:
     return merged_data
 
 
+def parse_markdown (markdown_content: str) -> str:
+    return mistune.html(markdown_content)
+
 # Parse Markdown file into data structure
 def markdown_to_data_structure(file_path: str, is_component: bool) -> Dict[str, Any]:
     """
@@ -203,7 +206,7 @@ def markdown_to_data_structure(file_path: str, is_component: bool) -> Dict[str, 
         with open(file_path, 'r') as f:
             markdown_content = f.read()
 
-        html_content = mistune.html(markdown_content)
+        html_content = parse_markdown(markdown_content)
         wrapped_html = f"<root>{html_content}</root>"
         soup = BeautifulSoup(wrapped_html, 'lxml-xml')
 
