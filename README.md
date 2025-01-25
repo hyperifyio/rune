@@ -10,24 +10,28 @@ translations, and views in a unified, portable format.
 ## Metaphor: Rune and the Basket of Fruits
 
 Think of Rune as a master basket weaver, skillfully crafting a basket to hold 
-different kinds of fruits:
+different kinds of fruits, each familiar to a specific audience:
 
-- **HTML files** are like apples — crisp, structured, and a classic choice.
-- **YAML files** are like oranges — layered and segmented into neat sections.
+- **HTML files** are like apples — crisp, structured, and familiar to frontend 
+  developers.
+- **YAML files** are like oranges — layered, segmented, and a favorite of 
+  backend developers and system architects.
 - **JSON translation files** are like bananas—rich in meaning, easy to peel 
-  apart, and essential for balance.
-- **Markdown files** are like grapes — small, simple, and versatile, adding 
-  extra flavor and depth.
+  apart, and familiar for localization experts.
+- **Markdown files** are like grapes — small, simple, and versatile, perfect for 
+  documentation writers. *Markdown is not yet implemented.* See 
+  (https://github.com/hyperifyio/rune/issues/22)[#22].
 - **Assets (images, etc.)** are like cherries — vibrant, eye-catching, and ready 
   to be included.
 
-Rune weaves all these fruits into a unified basket: a JSON file that holds 
-everything together in a portable and organized way. The basket is not just 
-static — it can be served as-is or handed to a backend, which may later add more 
-fruits (additional data or assets) to enhance its value and usability.
+Rune carefully weaves a basket — a JSON file — that organizes and holds all
+these fruits together in a portable and structured way. This basket isn't just 
+static; it can be used as-is or handed to a backend, where more fruits 
+(additional data or assets) can be added later to enrich its contents.
 
-This basket is adaptable to any setting, whether for a casual picnic (a static 
-web app) or a gourmet feast (a dynamic API-driven app).
+The result is an adaptable basket ready for any use case, whether it's for a 
+simple picnic (a static web content) or a grand feast (a dynamic API-driven 
+application).
 
 ## Key Features
 
@@ -104,6 +108,7 @@ project/                 # Contains YAML and HTML files
 #### **2. Add YAML or HTML Views**
 
 Example YAML file (`views/HelloWorld.yml`):
+
 ```yaml
 - type: "View"
   name: "HelloWorld"
@@ -121,6 +126,7 @@ Example YAML file (`views/HelloWorld.yml`):
 ```
 
 Example HTML file (`views/HelloWorld.html`):
+
 ```html
 <View name="HelloWorld">
   <div class="hello-world-container">
@@ -150,6 +156,7 @@ python3 rune.py views json
 ```
 
 The output will look like this:
+
 ```json
 [
   {
@@ -183,6 +190,7 @@ The output will look like this:
 ## Advanced Features
 
 ### **Reusable Components**
+
 Define components with parameters and children:
 
 Example (`views/UsageCard.html`):
@@ -197,6 +205,7 @@ Example (`views/UsageCard.html`):
 ```
 
 ### **Embedded Assets**
+
 Embed files directly into the JSON output:
 
 Example YAML asset (`views/assets.yml`):
@@ -207,6 +216,7 @@ Example YAML asset (`views/assets.yml`):
 ```
 
 ### **Image Handling**
+
 Automatically embed images referenced in properties like `Image`, `src`, or custom attributes.
 
 Example HTML (`views/Example.html`):
