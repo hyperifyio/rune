@@ -11,6 +11,7 @@ import json
 from typing import List, Dict, Any
 from collections import defaultdict
 from bs4 import BeautifulSoup
+import markdown2
 
 
 # Load the translation file
@@ -169,6 +170,46 @@ def merge_html_files(html_files: List[str]) -> List[Dict[str, Any]]:
             merged_data.extend(data)
     return merged_data
 
+# Parse Markdown file into data structure
+def markdown_to_data_structure(markdown_content: str, is_component: bool) -> Dict[str, Any]:
+    """
+    Converts Markdown content into structured data for Rune.
+
+    :param markdown_content: The Markdown content as a string.
+    :param is_component: If True, treats the Markdown as a component.
+    :return: A structured dictionary for Rune.
+    """
+    html_content = markdown2.markdown(markdown_content)
+    soup = BeautifulSoup(html_content, 'html.parser')
+
+    result = {
+        "type": "Component" if is_component else "View",
+        "name": None,
+        "body": []
+    }
+
+    for element in soup.contents:
+        if element.name == "h1" and not result["name"]:
+            # Use the first <h1> as the name
+            result["name"] = element.text.strip()
+        else:
+            result["body"].append(parse_html_element(element))
+
+    if not result["name"]:
+        raise ValueError("Markdown must contain an <h1> as the name.")
+
+    return result
+
+# Process Markdown files
+def merge_markdown_files(markdown_files: List[str]) -> List[Dict[str, Any]]:
+    merged_data = []
+    for file in markdown_files:
+        is_component = file.endswith(".Component.md")
+        with open(file, 'r') as f:
+            markdown_content = f.read()
+            data = markdown_to_data_structure(markdown_content, is_component)
+            merged_data.append(data)
+    return merged_data
 
 # Merge all YAML files in a directory into a single array and print it as JSON or YAML
 def main(directory: str, output_type: str, language_dir: str):
@@ -179,8 +220,11 @@ def main(directory: str, output_type: str, language_dir: str):
     # Get all .html files in the directory
     html_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.html')]
 
-    if not yaml_files and not html_files:
-        print(f"No .yml or .html files found in the directory: {directory}", file=sys.stderr)
+    # Get all .md files in the directory
+    markdown_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.md')]
+
+    if not yaml_files and not html_files and not markdown_files:
+        print(f"No .yml, .html or .md files found in the directory: {directory}", file=sys.stderr)
         return
 
     try:
@@ -196,6 +240,10 @@ def main(directory: str, output_type: str, language_dir: str):
         if html_files:
             html_data = merge_html_files(html_files)
             merged_data.extend(html_data)
+
+        if markdown_files:
+            markdown_data = merge_markdown_files(markdown_files)
+            merged_data.extend(markdown_data)
 
         embedded_data = embed_images(merged_data, directory)
 
