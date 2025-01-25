@@ -9,44 +9,53 @@ translations, and views in a unified, portable format.
 
 ## Metaphor: Rune and the Basket of Fruits
 
-Imagine your project directory is like a fruit market:
+Think of Rune as a master basket weaver, skillfully crafting a basket to hold 
+different kinds of fruits:
 
-- **HTML files** are like apples, crisp and structured.
-- **YAML files** are like oranges, segmented into neat sections.
-- **JSON translation files** are like bananas, rich with meaning and easy to peel apart for understanding.
-- **Assets (images, etc.)** are like cherries, vibrant and ready to be included.
+- **HTML files** are like apples — crisp, structured, and a classic choice.
+- **YAML files** are like oranges — layered and segmented into neat sections.
+- **JSON translation files** are like bananas—rich in meaning, easy to peel 
+  apart, and essential for balance.
+- **Markdown files** are like grapes — small, simple, and versatile, adding 
+  extra flavor and depth.
+- **Assets (images, etc.)** are like cherries — vibrant, eye-catching, and ready 
+  to be included.
 
-When you run Rune, it collects all these fruits and places them in a single basket—a JSON file. This basket contains:
+Rune weaves all these fruits into a unified basket: a JSON file that holds 
+everything together in a portable and organized way. The basket is not just 
+static — it can be served as-is or handed to a backend, which may later add more 
+fruits (additional data or assets) to enhance its value and usability.
 
-- Apples (HTML views).
-- Oranges (YAML views).
-- Bananas (translations).
-- Cherries (embedded assets, like images).
-
-The result? A portable, organized basket of fruits that you can serve anywhere—whether it’s a picnic (a static web app) or a gourmet dinner (a dynamic API-driven app).
+This basket is adaptable to any setting, whether for a casual picnic (a static 
+web app) or a gourmet feast (a dynamic API-driven app).
 
 ## Key Features
 
 ### 1. **Dynamic Content Processing**
+
 - Consolidates YAML (`*.yml`) and HTML (`*.html`) files into a single JSON 
   output, embedding any referenced assets as Base64-encoded data URLs.
 - Supports reusable components, nested children, and parameterized elements.
 
 ### 2. **Multilingual Support**
+
 - Integrates translations from `translations/*.LANG.json` files.
 - Outputs a flat `i18n` structure compatible with popular localization 
   libraries.
 
 ### 3. **Embedded Assets**
+
 - Automatically embeds image files and assets as Base64-encoded data URLs.
 - Supports SVG and other image formats with MIME type detection.
 
 ### 4. **Portability**
+
 - Outputs a self-contained JSON file that includes all views, translations, and 
   assets.
 - Ideal for static or dynamic web applications.
 
 ### 5. **Extensibility**
+
 - Supports custom components and nested structures.
 - Allows easy addition of new file types, assets, or features.
 
@@ -61,7 +70,7 @@ To use Rune, ensure you have the following installed:
 - Python 3.6 or later
 - Required Python libraries:
   ```bash
-  pip install PyYAML beautifulsoup4 lxml
+  pip install -r requirements.txt
   ```
 
 ---
