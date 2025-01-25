@@ -65,13 +65,12 @@ cd rune
 Structure your project directory as follows:
 
 ```
-project/
-├── views/               # Contains YAML and HTML files
+project/                 # Contains YAML and HTML files
 ├── translations/        # Contains translation JSON files
 │   ├── HelloWorld.en.json
 │   └── HelloWorld.fi.json
-├── assets/              # Contains images or other assets
-└── Makefile             # Makefile for build automation
+├── assets/              # May contain images or other assets (or anywhere else on your system)
+└── Makefile             # Makefile for build automation. Optional, for easier rebuild.
 ```
 
 #### **2. Add YAML or HTML Views**
