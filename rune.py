@@ -11,7 +11,7 @@ import json
 from typing import List, Dict, Any
 from collections import defaultdict
 from bs4 import BeautifulSoup
-import markdown2
+import mistune
 
 
 # Load the translation file
@@ -100,14 +100,16 @@ def get_all_translations(language_dir: str) -> Dict[str, Dict[str, Any]]:
             if len(file_parts) >= 3:
                 language_code = file_parts[-2]
                 file_path = os.path.join(language_dir, file)
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        translation_data = json.load(f)
 
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    translation_data = json.load(f)
-
-                if isinstance(translation_data, dict):
-                    translations_by_language[language_code].update(translation_data)
-                else:
-                    raise ValueError(f"JSON file {file_path} does not contain a dictionary at the root level.")
+                    if isinstance(translation_data, dict):
+                        translations_by_language[language_code].update(translation_data)
+                    else:
+                        raise ValueError(f"does not contain a dictionary at the root level.")
+                except Exception as e:
+                    raise ValueError(f"Error processing JSON file '{file_path}': {e}")
 
     if not translations_by_language:
         print(f"No .json translation files found in the language directory: {language_dir}", file=sys.stderr)
@@ -172,8 +174,9 @@ def parse_html_element(element):
 
 
 def html_to_data_structure(html_content):
-    soup = BeautifulSoup(html_content, 'lxml-xml')
-    root_elements = soup.find_all(recursive=False)
+    wrapped_html = f"<root>{html_content}</root>"
+    soup = BeautifulSoup(wrapped_html, 'lxml-xml')
+    root_elements = soup.root.find_all(recursive=False)
     data_structure = [parse_html_element(el) for el in root_elements]
     return data_structure
 
@@ -200,8 +203,9 @@ def markdown_to_data_structure(file_path: str, is_component: bool) -> Dict[str, 
         with open(file_path, 'r') as f:
             markdown_content = f.read()
 
-        html_content = markdown2.markdown(markdown_content)
-        soup = BeautifulSoup(html_content, 'lxml-xml')
+        html_content = mistune.html(markdown_content)
+        wrapped_html = f"<root>{html_content}</root>"
+        soup = BeautifulSoup(wrapped_html, 'lxml-xml')
 
         # Extract the name from the file name
         file_name = os.path.basename(file_path)
@@ -213,10 +217,12 @@ def markdown_to_data_structure(file_path: str, is_component: bool) -> Dict[str, 
             "body": []
         }
 
-        for element in soup.contents:
-            parsed_element = parse_html_element(element)
-            if parsed_element:
-                result["body"].append(parsed_element)
+        root_elements = soup.root.find_all(recursive=False)
+        data_structure = [parse_html_element(el) for el in root_elements]
+
+        for element in data_structure:
+            if element:
+                result["body"].append(element)
 
         return result
     except Exception as e:
