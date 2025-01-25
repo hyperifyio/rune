@@ -116,42 +116,59 @@ def get_all_translations(language_dir: str) -> Dict[str, Dict[str, Any]]:
 
 
 def parse_html_element(element):
-    result = {}
-    result['type'] = element.name
+    """
+    Recursively parses an HTML element into a structured dictionary.
+    :param element: A BeautifulSoup Tag or NavigableString.
+    :return: A dictionary representing the element or raw text if it's a string.
+    """
+    try:
+        if isinstance(element, str):  # Handle plain strings
+            text = element.strip()
+            return text if text else None
 
-    # Handle attributes
-    if element.attrs:
-        for attr, value in element.attrs.items():
-            if attr == 'class':
-                if isinstance(value, list):
-                    result['classes'] = value
-                elif isinstance(value, str):
-                    if value.startswith('[') and value.endswith(']'):
-                        result['classes'] = json.loads(value)
-                    else:
-                        result['classes'] = value.split()
-            elif attr == 'onClick':
-                # Assuming onClick attribute contains JSON string
-                try:
-                    result['onClick'] = json.loads(value)
-                except json.JSONDecodeError:
-                    result['onClick'] = value
+        if not hasattr(element, 'name'):  # Handle cases where element has no tag name
+            raise ValueError("Invalid HTML element: Missing 'name' attribute.")
+
+        result = {"type": element.name}
+
+        # Handle attributes
+        if element.attrs:
+            for attr, value in element.attrs.items():
+                if attr == 'class':
+                    if isinstance(value, list):
+                        result['classes'] = value
+                    elif isinstance(value, str):
+                        if value.startswith('[') and value.endswith(']'):
+                            result['classes'] = json.loads(value)
+                        else:
+                            result['classes'] = value.split()
+                elif attr == 'onClick':
+                    # Assuming onClick attribute contains JSON string
+                    try:
+                        result['onClick'] = json.loads(value)
+                    except json.JSONDecodeError:
+                        result['onClick'] = value
+                else:
+                    result[attr] = value
+
+        # Handle children
+        children = []
+        for child in element.contents:
+            if isinstance(child, str):
+                text = child.strip()
+                if text:
+                    children.append(text)
             else:
-                result[attr] = value
+                parsed_child = parse_html_element(child)
+                if parsed_child:
+                    children.append(parsed_child)
 
-    # Handle children
-    children = []
-    for child in element.contents:
-        if isinstance(child, str):
-            text = child.strip()
-            if text:
-                children.append(text)
-        else:
-            children.append(parse_html_element(child))
-    if children:
-        result['body'] = children
+        if children:
+            result["body"] = children
 
-    return result
+        return result
+    except Exception as e:
+        raise ValueError(f"Error parsing HTML element: {element}. Error: {e}")
 
 
 def html_to_data_structure(html_content):
@@ -170,46 +187,54 @@ def merge_html_files(html_files: List[str]) -> List[Dict[str, Any]]:
             merged_data.extend(data)
     return merged_data
 
-# Parse Markdown file into data structure
-def markdown_to_data_structure(markdown_content: str, is_component: bool) -> Dict[str, Any]:
-    """
-    Converts Markdown content into structured data for Rune.
 
-    :param markdown_content: The Markdown content as a string.
+# Parse Markdown file into data structure
+def markdown_to_data_structure(file_path: str, is_component: bool) -> Dict[str, Any]:
+    """
+    Converts Markdown content into structured data for Rune with enhanced error reporting.
+    :param file_path: The path to the Markdown file.
     :param is_component: If True, treats the Markdown as a component.
     :return: A structured dictionary for Rune.
     """
-    html_content = markdown2.markdown(markdown_content)
-    soup = BeautifulSoup(html_content, 'html.parser')
+    try:
+        with open(file_path, 'r') as f:
+            markdown_content = f.read()
 
-    result = {
-        "type": "Component" if is_component else "View",
-        "name": None,
-        "body": []
-    }
+        html_content = markdown2.markdown(markdown_content)
+        soup = BeautifulSoup(html_content, 'lxml-xml')
 
-    for element in soup.contents:
-        if element.name == "h1" and not result["name"]:
-            # Use the first <h1> as the name
-            result["name"] = element.text.strip()
-        else:
-            result["body"].append(parse_html_element(element))
+        # Extract the name from the file name
+        file_name = os.path.basename(file_path)
+        name = file_name.replace(".Component.md", "").replace(".md", "")
 
-    if not result["name"]:
-        raise ValueError("Markdown must contain an <h1> as the name.")
+        result = {
+            "type": "Component" if is_component else "View",
+            "name": name,
+            "body": []
+        }
 
-    return result
+        for element in soup.contents:
+            parsed_element = parse_html_element(element)
+            if parsed_element:
+                result["body"].append(parsed_element)
+
+        return result
+    except Exception as e:
+        raise ValueError(f"Error processing Markdown file '{file_path}': {e}")
+
 
 # Process Markdown files
 def merge_markdown_files(markdown_files: List[str]) -> List[Dict[str, Any]]:
     merged_data = []
     for file in markdown_files:
-        is_component = file.endswith(".Component.md")
-        with open(file, 'r') as f:
-            markdown_content = f.read()
-            data = markdown_to_data_structure(markdown_content, is_component)
+        try:
+            is_component = file.endswith(".Component.md")
+            data = markdown_to_data_structure(file, is_component)
             merged_data.append(data)
+        except Exception as e:
+            print(f"Error: Failed to process Markdown file '{file}': {e}", file=sys.stderr)
     return merged_data
+
 
 # Merge all YAML files in a directory into a single array and print it as JSON or YAML
 def main(directory: str, output_type: str, language_dir: str):
