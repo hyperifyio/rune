@@ -254,7 +254,11 @@ def main(directory: str, output_type: str, language_dir: str):
 
     try:
 
-        translations = get_all_translations(language_dir)
+        if os.path.isdir(language_dir):
+            translations = get_all_translations(language_dir)
+        else:
+            # print(f"Translation directory '{language_dir}' does not exist. Skipping translations.", file=sys.stderr)
+            translations = {}
 
         # Merge YAML and HTML data
         merged_data = []
