@@ -1,11 +1,13 @@
 # Rune
 
-**Rune** is a dynamic content builder and preprocessor that consolidates content 
+**Rune** is a dynamic content preprocessor that consolidates content 
 from YAML, HTML, and JSON files into a single JSON file. 
 
-This self-contained output is optimized for securely serving content through a 
-REST API. Rune simplifies content management, enabling you to embed assets, 
-translations, and views in a unified, portable format.
+This self-contained output is optimized for securely serving content through a
+REST API. Rune is built for the entire team — developers, designers, and content
+creators — bringing together assets, translations, and views in a way that is as
+familiar as possible. Input formats mirror standard HTML snippets or 
+developer-friendly YAML, making collaboration seamless for all team members.
 
 ## Metaphor: Rune and the Basket of Fruits
 
