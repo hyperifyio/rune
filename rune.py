@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-# Rune YML Builder
-# Copyright 2024 HyperifyIO <info@hyperify.io>
+# Rune Preprocessor
+# Copyright 2024-2025 HyperifyIO <info@hyperify.io>
 
 import os
 import sys
@@ -12,6 +12,7 @@ from typing import List, Dict, Any
 from collections import defaultdict
 from bs4 import BeautifulSoup
 import mistune
+import esprima
 
 
 # Load the translation file
@@ -245,6 +246,130 @@ def merge_markdown_files(markdown_files: List[str]) -> List[Dict[str, Any]]:
     return merged_data
 
 
+def parse_tsx_to_html(tsx_code: str) -> str:
+    """
+    Parse TSX code into HTML. Elements that cannot be rendered directly are wrapped in HTML comments.
+    """
+    ast = esprima.parseScript(tsx_code, jsx=True)
+
+    def transform_node(node):
+        if not node:
+            return ""
+
+        if node.type == "Program":
+            return "".join(transform_node(child) for child in node.body)
+
+        elif node.type == "ExpressionStatement":
+            return transform_node(node.expression)
+
+        elif node.type == "JSXElement":
+            opening_tag = transform_node(node.openingElement)
+            children = "".join(transform_node(child) for child in node.children)
+            closing_tag = transform_node(node.closingElement) if node.closingElement else ""
+            return f"{opening_tag}{children}{closing_tag}"
+
+        elif node.type == "JSXOpeningElement":
+            attributes = " ".join(transform_node(attr) for attr in node.attributes)
+            tag_name = node.name.name if node.name.type == "JSXIdentifier" else "unknown_JSXOpeningElement"
+            return f"<{tag_name} {attributes}>".strip()
+
+        elif node.type == "JSXClosingElement":
+            tag_name = node.name.name if node.name.type == "JSXIdentifier" else "unknown_JSXClosingElement"
+            return f"</{tag_name}>"
+
+        elif node.type == "JSXText":
+            return node.value.strip()
+
+        elif node.type == "Literal":
+            return str(node.value)
+
+        elif node.type == "JSXExpressionContainer":
+            expression = transform_node(node.expression)
+            return f"<!-- JSX Expression: {expression} -->"
+
+        elif node.type == "JSXAttribute":
+            name = node.name.name
+            value = transform_node(node.value) if node.value else ""
+            return f"{name}={value}"
+
+        elif node.type == "JSXSpreadAttribute":
+            return "<!-- Spread attributes are not supported: {...props} -->"
+
+        elif node.type == "JSXFragment":
+            children = "".join(transform_node(child) for child in node.children)
+            return f"<!-- Fragment start -->{children}<!-- Fragment end -->"
+
+        elif node.type == "Identifier":
+            return node.name
+
+        elif node.type == "JSXIdentifier":
+            return node.name
+
+        elif node.type == "BinaryExpression":
+            left = transform_node(node.left)
+            right = transform_node(node.right)
+            operator = node.operator
+            return f"({left} {operator} {right})"
+
+        elif node.type == "CallExpression":
+            callee = transform_node(node.callee)
+            args = ", ".join(transform_node(arg) for arg in node.arguments)
+            return f"<!-- Function call: {callee}({args}) -->"
+
+        elif node.type == "VariableDeclaration":
+            return "<!-- Variable declaration: Not rendered in HTML -->"
+
+        elif node.type == "FunctionDeclaration":
+            return "<!-- Function declaration: Not rendered in HTML -->"
+
+        elif node.type == "ImportDeclaration":
+            return f"<!-- Import: {transform_node(node.source)} -->"
+
+        # Add more node types here as needed
+        else:
+            return f"<!-- Unsupported node type: {node.type} -->"
+
+    return transform_node(ast)
+
+
+def merge_tsx_files(tsx_files: List[str]) -> List[Dict[str, Any]]:
+    """
+    Parse TSX files and convert them to a structured data format for components or views.
+    """
+    merged_data = []
+    for file in tsx_files:
+        try:
+            with open(file, 'r') as f:
+                tsx_code = f.read()
+                html_content = parse_tsx_to_html(tsx_code)
+                wrapped_html = f"<root>{html_content}</root>"
+                soup = BeautifulSoup(wrapped_html, 'lxml-xml')
+
+                # Extract the name from the file name
+                file_name = os.path.basename(file)
+                name = file_name.replace(".Component.tsx", "").replace(".tsx", "")
+                is_component = file_name.endswith(".Component.tsx")
+
+                result = {
+                    "type": "Component" if is_component else "View",
+                    "name": name,
+                    "body": []
+                }
+
+                # Parse the root elements
+                root_elements = soup.root.find_all(recursive=False)
+                data_structure = [parse_html_element(el) for el in root_elements]
+
+                for element in data_structure:
+                    if element:
+                        result["body"].append(element)
+
+                merged_data.append(result)
+        except Exception as e:
+            print(f"Error: Failed to process TSX file '{file}': {e}", file=sys.stderr)
+    return merged_data
+
+
 # Merge all YAML files in a directory into a single array and print it as JSON or YAML
 def main(directory: str, output_type: str, language_dir: str):
 
@@ -257,8 +382,11 @@ def main(directory: str, output_type: str, language_dir: str):
     # Get all .md files in the directory
     markdown_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.md')]
 
-    if not yaml_files and not html_files and not markdown_files:
-        print(f"No .yml, .html or .md files found in the directory: {directory}", file=sys.stderr)
+    # Get all .tsx files in the directory
+    tsx_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.tsx')]
+
+    if not yaml_files and not html_files and not markdown_files and not tsx_files:
+        print(f"No .yml, .html, .md, or .tsx files found in the directory: {directory}", file=sys.stderr)
         return
 
     try:
@@ -282,6 +410,10 @@ def main(directory: str, output_type: str, language_dir: str):
         if markdown_files:
             markdown_data = merge_markdown_files(markdown_files)
             merged_data.extend(markdown_data)
+
+        if tsx_files:
+            tsx_data = merge_tsx_files(tsx_files)
+            merged_data.extend(tsx_data)
 
         embedded_data = embed_images(merged_data, directory)
 

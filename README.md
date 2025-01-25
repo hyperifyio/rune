@@ -1,16 +1,16 @@
 # Rune
 
-**Rune** is a dynamic content preprocessor that consolidates content from 
-multiple sources (YAML, HTML, 
-Markdown[*](https://github.com/hyperifyio/rune/issues/22), SVG, PNG, ZIP, JPG 
-and JSON files) into a single JSON file.
+**Rune** is a tool that combines different types of content (like YAML, HTML,
+[Markdown](https://github.com/hyperifyio/rune/issues/22), 
+[TSX](https://github.com/hyperifyio/rune/issues/26), SVG, PNG, ZIP, JPG, and 
+JSON) into one easy-to-use JSON format.
 
-This self-contained output is optimized for securely serving content through a
-REST API. Rune is built for the entire team — developers, designers, and content
-creators — bringing together assets, translations, and views in a way that is as
-familiar as possible. The input format mirrors simple HTML and provides 
-support for YAML and Markdown[*](https://github.com/hyperifyio/rune/issues/22) 
-making collaboration seamless for all team members.
+This output is designed to securely serve content through a REST API.
+
+Rune is built for everyone on your team — developers, designers, and content 
+creators. It simplifies collaboration by supporting familiar formats like HTML, 
+YAML, Markdown, and TSX, making it easy to manage assets, translations, and 
+views all in one place.
 
 ## Metaphor: Rune and the Basket of Fruits
 

@@ -2,4 +2,4 @@ PyYAML>=6.0
 beautifulsoup4>=4.11.0
 lxml>=5.3.0
 mistune>=3.1.0
-markdown>=3.3.7
+esprima>=4.0.1
