@@ -191,8 +191,8 @@ def merge_html_files(html_files: List[str]) -> List[Dict[str, Any]]:
     return merged_data
 
 
-def parse_markdown (markdown_content: str) -> str:
-    return mistune.html(markdown_content)
+def parse_markdown (text: str) -> str:
+    return mistune.html(text)
 
 # Parse Markdown file into data structure
 def markdown_to_data_structure(file_path: str, is_component: bool) -> Dict[str, Any]:
