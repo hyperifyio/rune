@@ -30,14 +30,15 @@ def translate(key, translations):
 def merge_yaml_files(yaml_files: List[str]) -> List[Dict[str, Any]]:
     merged_data = []
     for file in yaml_files:
+        file_dir = os.path.dirname(file)
         with open(file, 'r') as f:
             data = yaml.safe_load(f)
             if isinstance(data, list):
+                data = embed_images(data, file_dir, file)
                 merged_data.extend(data)
             else:
                 raise ValueError(f"YAML file {file} does not contain a list at the root level.")
     return merged_data
-
 
 # Merge JSON files to single list
 def merge_json_files(yaml_files: List[str]) -> List[Dict[str, Any]]:
@@ -53,7 +54,7 @@ def merge_json_files(yaml_files: List[str]) -> List[Dict[str, Any]]:
 
 
 # Embed images mentioned in the YAML
-def embed_images(data: List[Dict[str, Any]], base_dir: str) -> List[Dict[str, Any]]:
+def embed_images(data: List[Dict[str, Any]], base_dir: str, source_file: str) -> List[Dict[str, Any]]:
     def embed_image_property(item: Dict[str, Any]):
         for key, value in item.items():
             if isinstance(value, dict):
@@ -62,7 +63,7 @@ def embed_images(data: List[Dict[str, Any]], base_dir: str) -> List[Dict[str, An
                 for sub_item in value:
                     if isinstance(sub_item, dict):
                         embed_image_property(sub_item)
-            elif (key == 'image' or key.endswith('Image') or key.startswith('Image') or key == 'src' ) and isinstance(value, str) and (not value.startswith('Component.Param.')):
+            elif (key == 'image' or key.endswith('Image') or key.startswith('Image') or key == 'src') and isinstance(value, str) and (not value.startswith('Component.Param.')):
                 image_path = os.path.join(base_dir, value)
                 if os.path.isfile(image_path):
                     with open(image_path, 'rb') as image_file:
@@ -71,13 +72,12 @@ def embed_images(data: List[Dict[str, Any]], base_dir: str) -> List[Dict[str, An
                         data_url = f"data:{mime_type};base64,{encoded_string}"
                         item[key] = data_url
                 else:
-                    raise FileNotFoundError(f"Image file not found: {image_path}")
+                    raise FileNotFoundError(f"Image file not found (from '{source_file}'): {value}")
 
     for obj in data:
         embed_image_property(obj)
 
     return data
-
 
 def get_data_url_mime_type (type: str) -> str:
     if type.startswith("svg"):
@@ -185,15 +185,18 @@ def html_to_data_structure(html_content):
 def merge_html_files(html_files: List[str]) -> List[Dict[str, Any]]:
     merged_data = []
     for file in html_files:
+        file_dir = os.path.dirname(file)
         with open(file, 'r') as f:
             html_content = f.read()
             data = html_to_data_structure(html_content)
+            data = embed_images(data, file_dir, file)
             merged_data.extend(data)
     return merged_data
 
 
 def parse_markdown (text: str) -> str:
     return mistune.html(text)
+
 
 # Parse Markdown file into data structure
 def markdown_to_data_structure(file_path: str, is_component: bool) -> Dict[str, Any]:
@@ -238,19 +241,30 @@ def merge_markdown_files(markdown_files: List[str]) -> List[Dict[str, Any]]:
     merged_data = []
     for file in markdown_files:
         try:
+            file_dir = os.path.dirname(file)
             is_component = file.endswith(".Component.md")
             data = markdown_to_data_structure(file, is_component)
+            data["body"] = embed_images(data["body"], file_dir, file)
             merged_data.append(data)
         except Exception as e:
             print(f"Error: Failed to process Markdown file '{file}': {e}", file=sys.stderr)
     return merged_data
 
 
+# Collect all files recursively from subdirectories
+def get_all_files_with_extension(base_dir: str, extension: str) -> List[str]:
+    return [
+        os.path.join(root, file)
+        for root, _, files in os.walk(base_dir)
+        for file in files if file.endswith(extension)
+    ]
+
+
 def parse_tsx_to_html(tsx_code: str) -> str:
     """
     Parse TSX code into HTML. Elements that cannot be rendered directly are wrapped in HTML comments.
     """
-    ast = esprima.parseScript(tsx_code, jsx=True)
+    ast = esprima.parseModule(tsx_code, jsx=True)
 
     def transform_node(node):
         if not node:
@@ -373,17 +387,11 @@ def merge_tsx_files(tsx_files: List[str]) -> List[Dict[str, Any]]:
 # Merge all YAML files in a directory into a single array and print it as JSON or YAML
 def main(directory: str, output_type: str, language_dir: str):
 
-    # Get all .yml files in the directory
-    yaml_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.yml')]
-
-    # Get all .html files in the directory
-    html_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.html')]
-
-    # Get all .md files in the directory
-    markdown_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.md')]
-
-    # Get all .tsx files in the directory
-    tsx_files = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith('.tsx')]
+    # Get all files with respective extensions
+    yaml_files = get_all_files_with_extension(directory, '.yml')
+    html_files = get_all_files_with_extension(directory, '.html')
+    markdown_files = get_all_files_with_extension(directory, '.md')
+    tsx_files = get_all_files_with_extension(directory, '.tsx')
 
     if not yaml_files and not html_files and not markdown_files and not tsx_files:
         print(f"No .yml, .html, .md, or .tsx files found in the directory: {directory}", file=sys.stderr)
@@ -415,20 +423,18 @@ def main(directory: str, output_type: str, language_dir: str):
             tsx_data = merge_tsx_files(tsx_files)
             merged_data.extend(tsx_data)
 
-        embedded_data = embed_images(merged_data, directory)
-
         # Structure the output in the desired format
         i18n_data = {
             "type": "i18n",
             "data": translations
         }
 
-        embedded_data.append(i18n_data)
+        merged_data.append(i18n_data)
 
         if output_type == 'json':
-            print(json.dumps(embedded_data, indent=2))
+            print(json.dumps(merged_data, indent=2))
         elif output_type == 'yml':
-            print(yaml.dump(embedded_data, default_flow_style=False))
+            print(yaml.dump(merged_data, default_flow_style=False))
         else:
             print(f"Unsupported output type: '{output_type}'. Please use 'json' or 'yml'.", file=sys.stderr)
 
