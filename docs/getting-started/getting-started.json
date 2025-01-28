@@ -1,0 +1,251 @@
+[
+  {
+    "type": "Component",
+    "name": "TabContainer",
+    "body": [
+      {
+        "type": "div",
+        "classes": [
+          "tab-container"
+        ],
+        "body": [
+          {
+            "type": "Component.Children"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "Title",
+    "body": [
+      {
+        "type": "h1",
+        "body": [
+          {
+            "type": "Component.Children"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "Description",
+    "body": [
+      {
+        "type": "p",
+        "classes": [
+          "description",
+          "m-2",
+          "text-white",
+          "prose",
+          "prose-white"
+        ],
+        "body": [
+          {
+            "type": "Component.Children"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "Section",
+    "body": [
+      {
+        "type": "section",
+        "body": [
+          {
+            "type": "h2",
+            "classes": [
+              "section-title"
+            ],
+            "body": [
+              "Component.Param.title"
+            ]
+          },
+          {
+            "type": "div",
+            "classes": [
+              "section-content"
+            ],
+            "body": [
+              {
+                "type": "Component.Children"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "Code",
+    "body": [
+      {
+        "type": "pre",
+        "body": [
+          {
+            "type": "code",
+            "body": [
+              {
+                "type": "Component.Children"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "Tab",
+    "body": [
+      {
+        "type": "div",
+        "classes": [
+          "tab"
+        ],
+        "name": "Component.Param.name",
+        "body": [
+          {
+            "type": "Component.Children"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "GettingStartedPage",
+    "path": "home",
+    "body": [
+      {
+        "type": "Title",
+        "body": [
+          "gettingStartedGuide.title"
+        ]
+      },
+      {
+        "type": "Description",
+        "body": [
+          "gettingStartedGuide.intro"
+        ]
+      },
+      {
+        "type": "Section",
+        "title": "gettingStartedGuide.installingRune",
+        "body": [
+          {
+            "type": "ol",
+            "body": [
+              {
+                "type": "li",
+                "body": [
+                  "gettingStartedGuide.installStep1"
+                ]
+              },
+              {
+                "type": "li",
+                "body": [
+                  "gettingStartedGuide.installStep2"
+                ]
+              },
+              {
+                "type": "li",
+                "body": [
+                  "gettingStartedGuide.installStep3"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Section",
+        "title": "gettingStartedGuide.firstProject",
+        "body": [
+          {
+            "type": "Description",
+            "body": [
+              "gettingStartedGuide.firstProjectDescription"
+            ]
+          },
+          {
+            "type": "TabContainer",
+            "body": [
+              {
+                "type": "Tab",
+                "name": "HTML",
+                "body": [
+                  {
+                    "type": "Code",
+                    "body": [
+                      "<page>\n  <header>\n    <title>Hello, Rune!</title>\n  </header>\n  <body>\n    <h1>Welcome to Rune</h1>\n    <p>This is your first Rune project.</p>\n  </body>\n</page>"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Tab",
+                "name": "JSON",
+                "body": [
+                  {
+                    "type": "Code",
+                    "body": [
+                      "{\n  \"page\": {\n    \"header\": {\n      \"title\": \"Hello, Rune!\"\n    },\n    \"body\": {\n      \"h1\": \"Welcome to Rune\",\n      \"p\": \"This is your first Rune project.\"\n    }\n  }\n}"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Tab",
+                "name": "YAML",
+                "body": [
+                  {
+                    "type": "Code",
+                    "body": [
+                      "page:\n  header:\n    title: \"Hello, Rune!\"\n  body:\n    h1: \"Welcome to Rune\"\n    p: \"This is your first Rune project.\""
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Section",
+        "title": "gettingStartedGuide.understandingBasics",
+        "body": [
+          {
+            "type": "Description",
+            "body": [
+              "gettingStartedGuide.understandingBasicsDescription"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Section",
+        "title": "gettingStartedGuide.nextSteps",
+        "body": [
+          {
+            "type": "Description",
+            "body": [
+              "gettingStartedGuide.nextStepsDescription"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "i18n",
+    "data": {}
+  }
+]

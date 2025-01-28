@@ -1,0 +1,14 @@
+{
+  "gettingStartedGuide.title": "Getting Started Guide",
+  "gettingStartedGuide.intro": "Welcome to Rune! This guide will help you set up Rune and create your first project using its flexible and easy-to-understand format.",
+  "gettingStartedGuide.installingRune": "Installing Rune",
+  "gettingStartedGuide.installStep1": "Download Rune from the official repository.",
+  "gettingStartedGuide.installStep2": "Install the required dependencies.",
+  "gettingStartedGuide.installStep3": "Run rune init to set up your first project.",
+  "gettingStartedGuide.firstProject": "Your First Rune Project",
+  "gettingStartedGuide.firstProjectDescription": "Below is an example of a simple Rune project in different formats. Use the tabs to select the format you prefer:",
+  "gettingStartedGuide.understandingBasics": "Understanding the Basics",
+  "gettingStartedGuide.understandingBasicsDescription": "Rune uses a structure similar to HTML for simplicity, with options to work in JSON or YAML formats as well.",
+  "gettingStartedGuide.nextSteps": "Next Steps",
+  "gettingStartedGuide.nextStepsDescription": "Explore the advanced features of Rune and join the community for support and inspiration!"
+}

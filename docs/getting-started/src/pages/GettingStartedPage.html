@@ -1,0 +1,65 @@
+<View
+  name="GettingStartedPage"
+  path="home"
+>
+  <Title>gettingStartedGuide.title</Title>
+  <Description>gettingStartedGuide.intro</Description>
+
+  <Section title="gettingStartedGuide.installingRune">
+    <ol>
+      <li>gettingStartedGuide.installStep1</li>
+      <li>gettingStartedGuide.installStep2</li>
+      <li>gettingStartedGuide.installStep3</li>
+    </ol>
+  </Section>
+
+  <Section title="gettingStartedGuide.firstProject">
+    <Description>gettingStartedGuide.firstProjectDescription</Description>
+    <TabContainer>
+      <Tab name="HTML">
+        <Code>&lt;page&gt;
+  &lt;header&gt;
+    &lt;title&gt;Hello, Rune!&lt;/title&gt;
+  &lt;/header&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome to Rune&lt;/h1&gt;
+    &lt;p&gt;This is your first Rune project.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/page&gt;
+</Code>
+      </Tab>
+      <Tab name="JSON">
+        <Code>{
+  "page": {
+    "header": {
+      "title": "Hello, Rune!"
+    },
+    "body": {
+      "h1": "Welcome to Rune",
+      "p": "This is your first Rune project."
+    }
+  }
+}
+</Code>
+      </Tab>
+      <Tab name="YAML">
+        <Code>page:
+  header:
+    title: "Hello, Rune!"
+  body:
+    h1: "Welcome to Rune"
+    p: "This is your first Rune project."
+</Code>
+      </Tab>
+    </TabContainer>
+  </Section>
+
+  <Section title="gettingStartedGuide.understandingBasics">
+    <Description>gettingStartedGuide.understandingBasicsDescription</Description>
+  </Section>
+
+  <Section title="gettingStartedGuide.nextSteps">
+    <Description>gettingStartedGuide.nextStepsDescription</Description>
+  </Section>
+
+</View>

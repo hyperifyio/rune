@@ -1,0 +1,14 @@
+{
+  "gettingStartedGuide.title": "Aloitusopas",
+  "gettingStartedGuide.intro": "Tervetuloa Runeen! Tämä opas auttaa sinua asentamaan Runen ja luomaan ensimmäisen projektisi sen joustavan ja helppokäyttöisen formaatin avulla.",
+  "gettingStartedGuide.installingRune": "Runen asentaminen",
+  "gettingStartedGuide.installStep1": "Lataa Rune virallisesta arkistosta.",
+  "gettingStartedGuide.installStep2": "Asenna tarvittavat riippuvuudet.",
+  "gettingStartedGuide.installStep3": "Suorita rune init asentaaksesi ensimmäisen projektisi.",
+  "gettingStartedGuide.firstProject": "Ensimmäinen Rune-projektisi",
+  "gettingStartedGuide.firstProjectDescription": "Alla on esimerkki yksinkertaisesta Rune-projektista eri formaateissa. Käytä välilehtiä valitaksesi haluamasi formaatti:",
+  "gettingStartedGuide.understandingBasics": "Perusteiden ymmärtäminen",
+  "gettingStartedGuide.understandingBasicsDescription": "Rune käyttää HTML:ää muistuttavaa rakennetta yksinkertaisuuden vuoksi, ja lisäksi voit työskennellä JSON- tai YAML-formaateilla.",
+  "gettingStartedGuide.nextSteps": "Seuraavat askeleet",
+  "gettingStartedGuide.nextStepsDescription": "Tutustu Runen edistyneisiin ominaisuuksiin ja liity yhteisöön saadaksesi tukea ja inspiraatiota!"
+}
