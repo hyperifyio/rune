@@ -1,11 +1,8 @@
-<View
-  name="InstallPage"
-  path="install"
->
-  <Layout>
+<View name="InstallPage" path="install">
+  <RuneLayout>
     <Section title="gettingStartedGuide.install.title">
       <Description>gettingStartedGuide.install.introduction</Description>
-      <ol>
+      <ol class="list-none">
         <li>
           <T>gettingStartedGuide.install.step1</T>
           <Code>git clone https://github.com/hyperifyio/rune.git</Code>
@@ -17,19 +14,18 @@
         <li>
           <T>gettingStartedGuide.install.step3</T>
           <Code>project/
-                ├── translations/
-                │   ├── example.en.json
-                │   ├── example.fi.json
-                ├── views/
-                │   ├── ExampleView.yml
-                │   ├── ExampleView.html
-                ├── assets/
-                ├── logo.png</Code>
+├── translations/
+│   ├── ExamplePage.en.json
+│   ├── ExamplePage.fi.json
+├── pages/
+│   ├── ExamplePage.yml or ExamplePage.html
+├── assets/
+    ├── logo.png</Code>
         </li>
       </ol>
     </Section>
     <Description>
       gettingStartedGuide.install.details
     </Description>
-  </Layout>
+  </RuneLayout>
 </View>

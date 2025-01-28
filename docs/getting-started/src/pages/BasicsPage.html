@@ -1,34 +1,23 @@
-<View
-  name="BasicsPage"
-  path="basics"
->
-  <Layout>
+<View name="BasicsPage" path="basics">
+  <RuneLayout>
     <Section title="gettingStartedGuide.basics.title">
       <Description>gettingStartedGuide.basics.introduction</Description>
-      <ol>
+      <ol class="list-none">
         <li>
           <T>gettingStartedGuide.basics.step1</T>
-          <Code>
-            <View name="ExampleView">
-              <div class="example-container">
-                <h1>gettingStartedGuide.basics.example.title</h1>
-                <p>gettingStartedGuide.basics.example.description</p>
-              </div>
-            </View>
-          </Code>
+          <BasicsExampleHTML />
         </li>
         <li>
           <T>gettingStartedGuide.basics.step2</T>
-          <Code>
-            project/
-            ├── translations/
-            │   ├── Example.en.json
-            │   ├── Example.fi.json
-            ├── views/
-            │   ├── ExampleView.html
-            ├── assets/
-            ├── logo.png
-          </Code>
+          <Code>project/
+├── translations/
+│   ├── Example.en.json
+│   ├── Example.fi.json
+├── views/
+│   ├── ExampleView.html
+├── assets/
+├── logo.png
+</Code>
         </li>
         <li>
           <T>gettingStartedGuide.basics.step3</T>
@@ -53,5 +42,5 @@
     <Description>
       gettingStartedGuide.basics.details
     </Description>
-  </Layout>
+  </RuneLayout>
 </View>
