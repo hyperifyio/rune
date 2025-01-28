@@ -1,7 +1,9 @@
 
 all: build
 
-build: update-rune getting-started.json
+build: getting-started.json
+
+update: update-rune build
 
 update-rune:
 	git pull

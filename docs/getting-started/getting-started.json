@@ -32,6 +32,118 @@
   },
   {
     "type": "Component",
+    "name": "Layout",
+    "body": [
+      {
+        "type": "div",
+        "classes": [
+          "layout"
+        ],
+        "body": [
+          {
+            "type": "header",
+            "body": [
+              {
+                "type": "nav",
+                "body": [
+                  {
+                    "type": "ul",
+                    "classes": [
+                      "nav"
+                    ],
+                    "body": [
+                      {
+                        "type": "li",
+                        "body": [
+                          {
+                            "type": "a",
+                            "href": "home",
+                            "body": [
+                              "gettingStartedGuide.nav.home"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "li",
+                        "body": [
+                          {
+                            "type": "a",
+                            "href": "install",
+                            "body": [
+                              "gettingStartedGuide.nav.installingRune"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "li",
+                        "body": [
+                          {
+                            "type": "a",
+                            "href": "firstProject",
+                            "body": [
+                              "gettingStartedGuide.nav.firstProject"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "li",
+                        "body": [
+                          {
+                            "type": "a",
+                            "href": "basics",
+                            "body": [
+                              "gettingStartedGuide.nav.understandingBasics"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "li",
+                        "body": [
+                          {
+                            "type": "a",
+                            "href": "customComponents",
+                            "body": [
+                              "gettingStartedGuide.nav.customComponents"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "li",
+                        "body": [
+                          {
+                            "type": "a",
+                            "href": "nextSteps",
+                            "body": [
+                              "gettingStartedGuide.nav.nextSteps"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "main",
+            "body": [
+              {
+                "type": "Component.Children"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
     "name": "Description",
     "body": [
       {
@@ -120,124 +232,955 @@
     ]
   },
   {
-    "type": "View",
-    "name": "GettingStartedPage",
-    "path": "home",
+    "type": "Component",
+    "name": "T",
     "body": [
       {
-        "type": "Title",
-        "body": [
-          "gettingStartedGuide.title"
-        ]
-      },
+        "type": "Component.Children"
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "AssetHandlingPage",
+    "path": "assetHandling",
+    "body": [
       {
-        "type": "Description",
-        "body": [
-          "gettingStartedGuide.intro"
-        ]
-      },
-      {
-        "type": "Section",
-        "title": "gettingStartedGuide.installingRune",
+        "type": "Layout",
         "body": [
           {
-            "type": "ol",
+            "type": "Section",
+            "title": "gettingStartedGuide.assetHandling.title",
             "body": [
               {
-                "type": "li",
+                "type": "Description",
                 "body": [
-                  "gettingStartedGuide.installStep1"
+                  "gettingStartedGuide.assetHandling.introduction"
                 ]
               },
               {
-                "type": "li",
+                "type": "ol",
                 "body": [
-                  "gettingStartedGuide.installStep2"
-                ]
-              },
-              {
-                "type": "li",
-                "body": [
-                  "gettingStartedGuide.installStep3"
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.assetHandling.step1"
+                        ]
+                      },
+                      {
+                        "type": "AssetHandlingExampleHTML"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.assetHandling.step2"
+                        ]
+                      },
+                      {
+                        "type": "AssetHandlingExampleOutputJSON"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.assetHandling.step3"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "rune.py project json"
+                        ]
+                      }
+                    ]
+                  }
                 ]
               }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Section",
-        "title": "gettingStartedGuide.firstProject",
-        "body": [
-          {
-            "type": "Description",
-            "body": [
-              "gettingStartedGuide.firstProjectDescription"
             ]
           },
           {
-            "type": "TabContainer",
+            "type": "Description",
+            "body": [
+              "gettingStartedGuide.assetHandling.details"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "HomePage",
+    "path": "home",
+    "body": [
+      {
+        "type": "Layout",
+        "body": [
+          {
+            "type": "Title",
+            "body": [
+              "gettingStartedGuide.title"
+            ]
+          },
+          {
+            "type": "Description",
+            "body": [
+              "gettingStartedGuide.intro"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "InstallPage",
+    "path": "install",
+    "body": [
+      {
+        "type": "Layout",
+        "body": [
+          {
+            "type": "Section",
+            "title": "gettingStartedGuide.install.title",
             "body": [
               {
-                "type": "Tab",
-                "name": "HTML",
+                "type": "Description",
                 "body": [
-                  {
-                    "type": "Code",
-                    "body": [
-                      "<page>\n  <header>\n    <title>Hello, Rune!</title>\n  </header>\n  <body>\n    <h1>Welcome to Rune</h1>\n    <p>This is your first Rune project.</p>\n  </body>\n</page>"
-                    ]
-                  }
+                  "gettingStartedGuide.install.introduction"
                 ]
               },
               {
-                "type": "Tab",
-                "name": "JSON",
+                "type": "ol",
                 "body": [
                   {
-                    "type": "Code",
+                    "type": "li",
                     "body": [
-                      "{\n  \"page\": {\n    \"header\": {\n      \"title\": \"Hello, Rune!\"\n    },\n    \"body\": {\n      \"h1\": \"Welcome to Rune\",\n      \"p\": \"This is your first Rune project.\"\n    }\n  }\n}"
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.install.step1"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "git clone https://github.com/hyperifyio/rune.git"
+                        ]
+                      }
                     ]
-                  }
-                ]
-              },
-              {
-                "type": "Tab",
-                "name": "YAML",
-                "body": [
+                  },
                   {
-                    "type": "Code",
+                    "type": "li",
                     "body": [
-                      "page:\n  header:\n    title: \"Hello, Rune!\"\n  body:\n    h1: \"Welcome to Rune\"\n    p: \"This is your first Rune project.\""
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.install.step2"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "pip install -r requirements.txt"
+                        ]
+                      },
+                      "\""
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.install.step3"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "project/\n                \u251c\u2500\u2500 translations/\n                \u2502   \u251c\u2500\u2500 example.en.json\n                \u2502   \u251c\u2500\u2500 example.fi.json\n                \u251c\u2500\u2500 views/\n                \u2502   \u251c\u2500\u2500 ExampleView.yml\n                \u2502   \u251c\u2500\u2500 ExampleView.html\n                \u251c\u2500\u2500 assets/\n                \u251c\u2500\u2500 logo.png"
+                        ]
+                      }
                     ]
                   }
                 ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "type": "Section",
-        "title": "gettingStartedGuide.understandingBasics",
-        "body": [
+          },
           {
             "type": "Description",
             "body": [
-              "gettingStartedGuide.understandingBasicsDescription"
+              "gettingStartedGuide.install.details"
             ]
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "NextStepsPage",
+    "path": "nextSteps",
+    "body": [
       {
-        "type": "Section",
-        "title": "gettingStartedGuide.nextSteps",
+        "type": "Layout",
         "body": [
+          {
+            "type": "Section",
+            "title": "gettingStartedGuide.nextSteps.title",
+            "body": [
+              {
+                "type": "Description",
+                "body": [
+                  "gettingStartedGuide.nextSteps.introduction"
+                ]
+              },
+              {
+                "type": "ol",
+                "body": [
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.nextSteps.step1"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.nextSteps.step2"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.nextSteps.step3"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
           {
             "type": "Description",
             "body": [
-              "gettingStartedGuide.nextStepsDescription"
+              "gettingStartedGuide.nextSteps.details"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "CustomComponentsPage",
+    "path": "customComponents",
+    "body": [
+      {
+        "type": "Layout",
+        "body": [
+          {
+            "type": "Section",
+            "title": "gettingStartedGuide.customComponents.title",
+            "body": [
+              {
+                "type": "Description",
+                "body": [
+                  "gettingStartedGuide.customComponents.introduction"
+                ]
+              },
+              {
+                "type": "ol",
+                "body": [
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.customComponents.step1"
+                        ]
+                      },
+                      {
+                        "type": "CustomComponentsExampleComponentHTML"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.customComponents.step2"
+                        ]
+                      },
+                      {
+                        "type": "CustomComponentsExampleViewHTML"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.customComponents.step3"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "rune project json"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Description",
+            "body": [
+              "gettingStartedGuide.customComponents.details"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "FirstProjectPage",
+    "path": "firstProject",
+    "body": [
+      {
+        "type": "Layout",
+        "body": [
+          {
+            "type": "Section",
+            "title": "gettingStartedGuide.firstProject.title",
+            "body": [
+              {
+                "type": "Description",
+                "body": [
+                  "gettingStartedGuide.firstProject.introduction"
+                ]
+              },
+              {
+                "type": "ol",
+                "body": [
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.firstProject.step1"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "rune init ExampleProject"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.firstProject.step2"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "project/\n  \u251c\u2500\u2500 translations/\n  \u2502   \u251c\u2500\u2500 Hello.en.json\n  \u2502   \u251c\u2500\u2500 Hello.fi.json\n  \u251c\u2500\u2500 pages/\n  \u2502   \u251c\u2500\u2500 HelloPage.yml\n  \u251c\u2500\u2500 assets/\n      \u251c\u2500\u2500 logo.png"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.firstProject.step3"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "python3 rune.py project json"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Section",
+            "title": "gettingStartedGuide.firstProject.example.title",
+            "body": [
+              {
+                "type": "Description",
+                "body": [
+                  "gettingStartedGuide.firstProject.example.description"
+                ]
+              },
+              {
+                "type": "TabContainer",
+                "body": [
+                  {
+                    "type": "Tab",
+                    "name": "HTML",
+                    "body": [
+                      {
+                        "type": "FirstProjectExampleHTML"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Tab",
+                    "name": "MD",
+                    "body": [
+                      {
+                        "type": "FirstProjectExampleMD"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Tab",
+                    "name": "YAML",
+                    "body": [
+                      {
+                        "type": "FirstProjectExampleYAML"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Description",
+            "body": [
+              "gettingStartedGuide.firstProject.details"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "BasicsPage",
+    "path": "basics",
+    "body": [
+      {
+        "type": "Layout",
+        "body": [
+          {
+            "type": "Section",
+            "title": "gettingStartedGuide.basics.title",
+            "body": [
+              {
+                "type": "Description",
+                "body": [
+                  "gettingStartedGuide.basics.introduction"
+                ]
+              },
+              {
+                "type": "ol",
+                "body": [
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.basics.step1"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          {
+                            "type": "View",
+                            "name": "ExampleView",
+                            "body": [
+                              {
+                                "type": "div",
+                                "classes": [
+                                  "example-container"
+                                ],
+                                "body": [
+                                  {
+                                    "type": "h1",
+                                    "body": [
+                                      "gettingStartedGuide.basics.example.title"
+                                    ]
+                                  },
+                                  {
+                                    "type": "p",
+                                    "body": [
+                                      "gettingStartedGuide.basics.example.description"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.basics.step2"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "project/\n            \u251c\u2500\u2500 translations/\n            \u2502   \u251c\u2500\u2500 Example.en.json\n            \u2502   \u251c\u2500\u2500 Example.fi.json\n            \u251c\u2500\u2500 views/\n            \u2502   \u251c\u2500\u2500 ExampleView.html\n            \u251c\u2500\u2500 assets/\n            \u251c\u2500\u2500 logo.png"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.basics.step3"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "python3 rune.py project json"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Section",
+            "title": "gettingStartedGuide.basics.example.title",
+            "body": [
+              {
+                "type": "Description",
+                "body": [
+                  "gettingStartedGuide.basics.example.description"
+                ]
+              },
+              {
+                "type": "TabContainer",
+                "body": [
+                  {
+                    "type": "Tab",
+                    "name": "HTML",
+                    "body": [
+                      {
+                        "type": "BasicsExampleHTML"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Tab",
+                    "name": "YAML",
+                    "body": [
+                      {
+                        "type": "BasicsExampleYAML"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Tab",
+                    "name": "Markdown",
+                    "body": [
+                      {
+                        "type": "BasicsExampleMarkdown"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Description",
+            "body": [
+              "gettingStartedGuide.basics.details"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "MultilingualSupportPage",
+    "path": "multilingualSupport",
+    "body": [
+      {
+        "type": "Layout",
+        "body": [
+          {
+            "type": "Section",
+            "title": "gettingStartedGuide.multilingualSupport.title",
+            "body": [
+              {
+                "type": "Description",
+                "body": [
+                  "gettingStartedGuide.multilingualSupport.introduction"
+                ]
+              },
+              {
+                "type": "ol",
+                "body": [
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.multilingualSupport.step1"
+                        ]
+                      },
+                      {
+                        "type": "MultilingualSupportExampleJSON"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.multilingualSupport.step2"
+                        ]
+                      },
+                      {
+                        "type": "MultilingualSupportExampleViewHTML"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "li",
+                    "body": [
+                      {
+                        "type": "T",
+                        "body": [
+                          "gettingStartedGuide.multilingualSupport.step3"
+                        ]
+                      },
+                      {
+                        "type": "Code",
+                        "body": [
+                          "rune.py project json"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Description",
+            "body": [
+              "gettingStartedGuide.multilingualSupport.details"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "FirstProjectExampleHTML",
+    "body": [
+      {
+        "type": "p",
+        "body": [
+          "File",
+          {
+            "type": "code",
+            "body": [
+              "HelloPage.html"
+            ]
+          },
+          ":"
+        ]
+      },
+      {
+        "type": "pre",
+        "body": [
+          {
+            "type": "code",
+            "classes": [
+              "language-html"
+            ],
+            "body": [
+              "<View name=\"HelloPage\" path=\"hello\">\n<h1>Welcome to Rune</h1>\n<p>This is your first Rune project.</p>\n</View>"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "View",
+    "name": "FirstProjectExampleYAML.COmponent",
+    "body": [
+      {
+        "type": "p",
+        "body": [
+          "File",
+          {
+            "type": "code",
+            "body": [
+              "HelloPage.yaml"
+            ]
+          },
+          ":"
+        ]
+      },
+      {
+        "type": "pre",
+        "body": [
+          {
+            "type": "code",
+            "classes": [
+              "language-yaml"
+            ],
+            "body": [
+              "- type: View\n  name: \"HelloPage\"\n  path: \"hello\"\n  body:\n  - type: h1\n    body: Welcome to Rune\n  - type: p\n    body: This is your first Rune project."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "AssetHandlingExampleOutputJSON",
+    "body": [
+      {
+        "type": "p",
+        "body": [
+          "{\n\"type\": \"View\",\n\"name\": \"ExampleView\",\n\"body\": [\n{\n\"type\": \"img\",\n\"src\": \"data:image/png;base64,",
+          {
+            "type": "Base64-Encoded",
+            "body": [
+              ",\nalt: Company Logo\n}\n]\n}"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "CustomComponentsExampleViewHTML",
+    "body": [
+      {
+        "type": "p",
+        "body": [
+          "File",
+          {
+            "type": "code",
+            "body": [
+              "ButtonPage.html"
+            ]
+          },
+          ":"
+        ]
+      },
+      {
+        "type": "pre",
+        "body": [
+          {
+            "type": "code",
+            "classes": [
+              "language-html"
+            ],
+            "body": [
+              "<View name=\"ButtonPage\">\n  <div>\n    <Button label=\"Click Me\" />\n  </div>\n</View>"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "MultilingualSupportExampleViewHTML",
+    "body": [
+      {
+        "type": "pre",
+        "body": [
+          {
+            "type": "code",
+            "classes": [
+              "language-html"
+            ],
+            "body": [
+              "<View name=\"ExampleView\">\n  <div class=\"example-container\">\n    <h1>example.title</h1>\n    <p>example.subtitle</p>\n  </div>\n</View>"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "AssetHandlingExampleHTML",
+    "body": [
+      {
+        "type": "pre",
+        "body": [
+          {
+            "type": "code",
+            "classes": [
+              "language-html"
+            ],
+            "body": [
+              "<img src=\"images/logo.png\" alt=\"Company Logo\" />"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "MultilingualSupportExampleJSON",
+    "body": [
+      {
+        "type": "pre",
+        "body": [
+          {
+            "type": "code",
+            "classes": [
+              "language-json"
+            ],
+            "body": [
+              "{\n  \"example.title\": \"Hello, Rune!\",\n  \"example.subtitle\": \"Welcome to Rune's multilingual support.\"\n}"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "FirstProjectExampleMD",
+    "body": [
+      {
+        "type": "p",
+        "body": [
+          "File",
+          {
+            "type": "code",
+            "body": [
+              "HelloPage.md"
+            ]
+          },
+          ":"
+        ]
+      },
+      {
+        "type": "pre",
+        "body": [
+          {
+            "type": "code",
+            "classes": [
+              "language-md"
+            ],
+            "body": [
+              "# Welcome to Rune\n\nThis is your first Rune project."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "CustomComponentsExampleComponentHTML",
+    "body": [
+      {
+        "type": "p",
+        "body": [
+          "File",
+          {
+            "type": "code",
+            "body": [
+              "Button.html"
+            ]
+          },
+          ":"
+        ]
+      },
+      {
+        "type": "pre",
+        "body": [
+          {
+            "type": "code",
+            "classes": [
+              "language-html"
+            ],
+            "body": [
+              "<Component name=\"Button\">\n  <Component.Param name=\"label\" />\n  <button>\n    <Component.Param.label />\n  </button>\n</Component>"
             ]
           }
         ]

@@ -1,0 +1,57 @@
+<View
+  name="BasicsPage"
+  path="basics"
+>
+  <Layout>
+    <Section title="gettingStartedGuide.basics.title">
+      <Description>gettingStartedGuide.basics.introduction</Description>
+      <ol>
+        <li>
+          <T>gettingStartedGuide.basics.step1</T>
+          <Code>
+            <View name="ExampleView">
+              <div class="example-container">
+                <h1>gettingStartedGuide.basics.example.title</h1>
+                <p>gettingStartedGuide.basics.example.description</p>
+              </div>
+            </View>
+          </Code>
+        </li>
+        <li>
+          <T>gettingStartedGuide.basics.step2</T>
+          <Code>
+            project/
+            ├── translations/
+            │   ├── Example.en.json
+            │   ├── Example.fi.json
+            ├── views/
+            │   ├── ExampleView.html
+            ├── assets/
+            ├── logo.png
+          </Code>
+        </li>
+        <li>
+          <T>gettingStartedGuide.basics.step3</T>
+          <Code>python3 rune.py project json</Code>
+        </li>
+      </ol>
+    </Section>
+    <Section title="gettingStartedGuide.basics.example.title">
+      <Description>gettingStartedGuide.basics.example.description</Description>
+      <TabContainer>
+        <Tab name="HTML">
+          <BasicsExampleHTML />
+        </Tab>
+        <Tab name="YAML">
+          <BasicsExampleYAML />
+        </Tab>
+        <Tab name="Markdown">
+          <BasicsExampleMarkdown />
+        </Tab>
+      </TabContainer>
+    </Section>
+    <Description>
+      gettingStartedGuide.basics.details
+    </Description>
+  </Layout>
+</View>

@@ -1,0 +1,48 @@
+<View
+  name="FirstProjectPage"
+  path="firstProject"
+>
+  <Layout>
+    <Section title="gettingStartedGuide.firstProject.title">
+      <Description>gettingStartedGuide.firstProject.introduction</Description>
+      <ol>
+        <li>
+          <T>gettingStartedGuide.firstProject.step1</T>
+          <Code>rune init ExampleProject</Code>
+        </li>
+        <li>
+          <T>gettingStartedGuide.firstProject.step2</T>
+          <Code>
+project/
+  ├── translations/
+  │   ├── Hello.en.json
+  │   ├── Hello.fi.json
+  ├── pages/
+  │   ├── HelloPage.yml
+  ├── assets/
+      ├── logo.png
+          </Code>
+        </li>
+        <li>
+          <T>gettingStartedGuide.firstProject.step3</T>
+          <Code>python3 rune.py project json</Code>
+        </li>
+      </ol>
+    </Section>
+    <Section title="gettingStartedGuide.firstProject.example.title">
+      <Description>gettingStartedGuide.firstProject.example.description</Description>
+      <TabContainer>
+        <Tab name="HTML">
+          <FirstProjectExampleHTML />
+        </Tab>
+        <Tab name="MD">
+          <FirstProjectExampleMD />
+        </Tab>
+        <Tab name="YAML">
+          <FirstProjectExampleYAML />
+        </Tab>
+      </TabContainer>
+    </Section>
+    <Description>gettingStartedGuide.firstProject.details</Description>
+  </Layout>
+</View>
