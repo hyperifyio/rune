@@ -1,5 +1,3 @@
-File `HelloPage.md`:
-
 ```md
 # Welcome to Rune
 

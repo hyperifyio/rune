@@ -1,5 +1,3 @@
-File `ExamplePage.html`:
-
 ```html
 <View name="ExamplePage">
   <div class="example-page">

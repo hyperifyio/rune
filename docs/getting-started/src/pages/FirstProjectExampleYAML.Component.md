@@ -1,5 +1,3 @@
-File `HelloPage.yaml`:
-
 ```yaml
 - type: View
   name: "HelloPage"

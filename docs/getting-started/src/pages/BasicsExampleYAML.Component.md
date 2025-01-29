@@ -1,5 +1,3 @@
-File `ExamplePage.yml`:
-
 ```yaml
 - type: View
   name: ExamplePage

@@ -1,3 +1,4 @@
+```json
 {
   "type": "View",
   "name": "ExampleView",
@@ -9,3 +10,4 @@
     }
   ]
 }
+```

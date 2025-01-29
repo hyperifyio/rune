@@ -1,5 +1,3 @@
-File `HelloPage.html`:
-
 ```html
 <View name="HelloPage" path="hello">
   <h1>Welcome to Rune</h1>

@@ -1,16 +1,13 @@
 <Component name="RuneLayout">
   <div class="rune-layout">
     <header class="m-10">
-      <nav>
-        <ul class="list-none rune-nav flex flex-row flex-wrap content-start items-stretch justify-center justify-items-center h-20">
-          <li><a href="/app/services/rune/home" class="nav-link flex content-center items-center justify-center justify-items-center m-0 p-8 text-white prose prose-white">gettingStartedGuide.nav.home</a></li>
-          <li><a href="/app/services/rune/install" class="nav-link flex content-center items-center justify-center justify-items-center m-0 p-8 text-white prose prose-white">gettingStartedGuide.nav.installingRune</a></li>
-          <li><a href="/app/services/rune/firstProject" class="nav-link flex content-center items-center justify-center justify-items-center m-0 p-8 text-white prose prose-white">gettingStartedGuide.nav.firstProject</a></li>
-          <li><a href="/app/services/rune/basics" class="nav-link flex content-center items-center justify-center justify-items-center m-0 p-8 text-white prose prose-white">gettingStartedGuide.nav.understandingBasics</a></li>
-          <li><a href="/app/services/rune/customComponents" class="nav-link flex content-center items-center justify-center justify-items-center m-0 p-8 text-white prose prose-white">gettingStartedGuide.nav.customComponents</a></li>
-          <li><a href="/app/services/rune/nextSteps" class="nav-link flex content-center items-center justify-center justify-items-center m-0 p-8 text-white prose prose-white">gettingStartedGuide.nav.nextSteps</a></li>
-        </ul>
-      </nav>
+      <Nav>
+        <NavItem href="/app/services/rune/home">gettingStartedGuide.nav.home</NavItem>
+        <NavItem href="/app/services/rune/install">gettingStartedGuide.nav.installingRune</NavItem>
+        <NavItem href="/app/services/rune/firstProject">gettingStartedGuide.nav.firstProject</NavItem>
+        <NavItem href="/app/services/rune/basics">gettingStartedGuide.nav.understandingBasics</NavItem>
+        <NavItem href="/app/services/rune/nextSteps">gettingStartedGuide.nav.nextSteps</NavItem>
+      </Nav>
     </header>
     <main class="rune-main p-8">
       <Component.Children></Component.Children>

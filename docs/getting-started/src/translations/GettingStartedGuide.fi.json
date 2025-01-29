@@ -8,6 +8,9 @@
   "gettingStartedGuide.nav.understandingBasics": "Perusteet",
   "gettingStartedGuide.nav.customComponents": "Mukautetut komponentit",
   "gettingStartedGuide.nav.nextSteps": "Seuraavat askeleet",
+  "gettingStartedGuide.nav.multilingualSupport": "Kielituki",
+
+  "gettingStartedGuide.next": "> Seuraavaksi ",
 
   "gettingStartedGuide.install.title": "Runen asentaminen",
   "gettingStartedGuide.install.introduction": "Rune on kevyt, Python-pohjainen työkalu, joka yhdistää sisällön eri formaateista yhdeksi JSON-tulosteeksi, joka voidaan helposti toimittaa REST API:n kautta. Noudata näitä ohjeita asentaaksesi Runen:",

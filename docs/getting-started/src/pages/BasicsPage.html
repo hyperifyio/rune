@@ -2,14 +2,15 @@
   <RuneLayout>
     <Section title="gettingStartedGuide.basics.title">
       <Description>gettingStartedGuide.basics.introduction</Description>
-      <ol class="list-none">
-        <li>
+      <StepList>
+        <Step>
           <T>gettingStartedGuide.basics.step1</T>
-          <BasicsExampleHTML />
-        </li>
-        <li>
+          <BasicsExampleHTML></BasicsExampleHTML>
+        </Step>
+        <Step>
           <T>gettingStartedGuide.basics.step2</T>
-          <Code>project/
+          <Code>
+project/
 ├── translations/
 │   ├── Example.en.json
 │   ├── Example.fi.json
@@ -18,29 +19,32 @@
 ├── assets/
 ├── logo.png
 </Code>
-        </li>
-        <li>
+        </Step>
+        <Step>
           <T>gettingStartedGuide.basics.step3</T>
           <Code>python3 rune.py project json</Code>
-        </li>
-      </ol>
+        </Step>
+      </StepList>
     </Section>
     <Section title="gettingStartedGuide.basics.example.title">
       <Description>gettingStartedGuide.basics.example.description</Description>
       <TabContainer>
         <Tab name="HTML">
-          <BasicsExampleHTML />
+          <BasicsExampleHTML></BasicsExampleHTML>
         </Tab>
         <Tab name="YAML">
-          <BasicsExampleYAML />
+          <BasicsExampleYAML></BasicsExampleYAML>
         </Tab>
         <Tab name="Markdown">
-          <BasicsExampleMarkdown />
+          <BasicsExampleMarkdown></BasicsExampleMarkdown>
         </Tab>
       </TabContainer>
     </Section>
     <Description>
       gettingStartedGuide.basics.details
     </Description>
+    <NextLink href="/app/services/rune/nextSteps">
+      gettingStartedGuide.nav.nextSteps
+    </NextLink>
   </RuneLayout>
 </View>

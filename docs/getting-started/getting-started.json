@@ -1,12 +1,73 @@
 [
   {
     "type": "Component",
+    "name": "StepList",
+    "body": [
+      {
+        "type": "ol",
+        "classes": [
+          "list-none",
+          "text-white",
+          "prose",
+          "prose-white"
+        ],
+        "body": [
+          {
+            "type": "Component.Children"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "NavItem",
+    "body": [
+      {
+        "type": "Component.Param",
+        "name": "href"
+      },
+      {
+        "type": "li",
+        "body": [
+          {
+            "type": "a",
+            "href": "Component.Param.href",
+            "classes": [
+              "nav-link",
+              "flex",
+              "content-center",
+              "items-center",
+              "justify-center",
+              "justify-items-center",
+              "m-0",
+              "p-8",
+              "text-white",
+              "prose",
+              "prose-white",
+              "text-nowrap"
+            ],
+            "body": [
+              {
+                "type": "Component.Children"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
     "name": "TabContainer",
     "body": [
       {
         "type": "div",
         "classes": [
-          "tab-container"
+          "tab-container",
+          "text-white",
+          "prose",
+          "prose-white"
         ],
         "body": [
           {
@@ -76,173 +137,41 @@
             ],
             "body": [
               {
-                "type": "nav",
+                "type": "Nav",
                 "body": [
                   {
-                    "type": "ul",
-                    "classes": [
-                      "list-none",
-                      "rune-nav",
-                      "flex",
-                      "flex-row",
-                      "flex-wrap",
-                      "content-start",
-                      "items-stretch",
-                      "justify-center",
-                      "justify-items-center",
-                      "h-20"
-                    ],
+                    "type": "NavItem",
+                    "href": "/app/services/rune/home",
                     "body": [
-                      {
-                        "type": "li",
-                        "body": [
-                          {
-                            "type": "a",
-                            "href": "/app/services/rune/home",
-                            "classes": [
-                              "nav-link",
-                              "flex",
-                              "content-center",
-                              "items-center",
-                              "justify-center",
-                              "justify-items-center",
-                              "m-0",
-                              "p-8",
-                              "text-white",
-                              "prose",
-                              "prose-white"
-                            ],
-                            "body": [
-                              "gettingStartedGuide.nav.home"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "li",
-                        "body": [
-                          {
-                            "type": "a",
-                            "href": "/app/services/rune/install",
-                            "classes": [
-                              "nav-link",
-                              "flex",
-                              "content-center",
-                              "items-center",
-                              "justify-center",
-                              "justify-items-center",
-                              "m-0",
-                              "p-8",
-                              "text-white",
-                              "prose",
-                              "prose-white"
-                            ],
-                            "body": [
-                              "gettingStartedGuide.nav.installingRune"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "li",
-                        "body": [
-                          {
-                            "type": "a",
-                            "href": "/app/services/rune/firstProject",
-                            "classes": [
-                              "nav-link",
-                              "flex",
-                              "content-center",
-                              "items-center",
-                              "justify-center",
-                              "justify-items-center",
-                              "m-0",
-                              "p-8",
-                              "text-white",
-                              "prose",
-                              "prose-white"
-                            ],
-                            "body": [
-                              "gettingStartedGuide.nav.firstProject"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "li",
-                        "body": [
-                          {
-                            "type": "a",
-                            "href": "/app/services/rune/basics",
-                            "classes": [
-                              "nav-link",
-                              "flex",
-                              "content-center",
-                              "items-center",
-                              "justify-center",
-                              "justify-items-center",
-                              "m-0",
-                              "p-8",
-                              "text-white",
-                              "prose",
-                              "prose-white"
-                            ],
-                            "body": [
-                              "gettingStartedGuide.nav.understandingBasics"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "li",
-                        "body": [
-                          {
-                            "type": "a",
-                            "href": "/app/services/rune/customComponents",
-                            "classes": [
-                              "nav-link",
-                              "flex",
-                              "content-center",
-                              "items-center",
-                              "justify-center",
-                              "justify-items-center",
-                              "m-0",
-                              "p-8",
-                              "text-white",
-                              "prose",
-                              "prose-white"
-                            ],
-                            "body": [
-                              "gettingStartedGuide.nav.customComponents"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "li",
-                        "body": [
-                          {
-                            "type": "a",
-                            "href": "/app/services/rune/nextSteps",
-                            "classes": [
-                              "nav-link",
-                              "flex",
-                              "content-center",
-                              "items-center",
-                              "justify-center",
-                              "justify-items-center",
-                              "m-0",
-                              "p-8",
-                              "text-white",
-                              "prose",
-                              "prose-white"
-                            ],
-                            "body": [
-                              "gettingStartedGuide.nav.nextSteps"
-                            ]
-                          }
-                        ]
-                      }
+                      "gettingStartedGuide.nav.home"
+                    ]
+                  },
+                  {
+                    "type": "NavItem",
+                    "href": "/app/services/rune/install",
+                    "body": [
+                      "gettingStartedGuide.nav.installingRune"
+                    ]
+                  },
+                  {
+                    "type": "NavItem",
+                    "href": "/app/services/rune/firstProject",
+                    "body": [
+                      "gettingStartedGuide.nav.firstProject"
+                    ]
+                  },
+                  {
+                    "type": "NavItem",
+                    "href": "/app/services/rune/basics",
+                    "body": [
+                      "gettingStartedGuide.nav.understandingBasics"
+                    ]
+                  },
+                  {
+                    "type": "NavItem",
+                    "href": "/app/services/rune/nextSteps",
+                    "body": [
+                      "gettingStartedGuide.nav.nextSteps"
                     ]
                   }
                 ]
@@ -292,7 +221,70 @@
           {
             "type": "div",
             "classes": [
-              "section-content"
+              "section-content",
+              "text-white",
+              "prose",
+              "prose-white"
+            ],
+            "body": [
+              {
+                "type": "Component.Children"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "Step",
+    "body": [
+      {
+        "type": "li",
+        "classes": [
+          "step",
+          "text-white",
+          "prose",
+          "prose-white",
+          "p-6"
+        ],
+        "body": [
+          {
+            "type": "Component.Children"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "NextLink",
+    "body": [
+      {
+        "type": "Component.Param",
+        "name": "href"
+      },
+      {
+        "type": "p",
+        "classes": [
+          "next-link",
+          "text-white",
+          "prose",
+          "prose-white",
+          "mx-2",
+          "mt-8"
+        ],
+        "body": [
+          "gettingStartedGuide.next",
+          {
+            "type": "a",
+            "href": "Component.Param.href",
+            "classes": [
+              "link",
+              "text-white",
+              "prose",
+              "prose-white"
             ],
             "body": [
               {
@@ -320,6 +312,13 @@
         "body": [
           {
             "type": "code",
+            "classes": [
+              "code",
+              "text-white",
+              "prose",
+              "prose-white",
+              "p-6"
+            ],
             "body": [
               {
                 "type": "Component.Children"
@@ -347,10 +346,51 @@
           "prose",
           "prose-white"
         ],
-        "name": "Component.Param.name",
         "body": [
           {
+            "type": "h4",
+            "classes": [
+              "text-white",
+              "prose",
+              "prose-white"
+            ],
+            "body": [
+              "Component.Param.name"
+            ]
+          },
+          {
             "type": "Component.Children"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Component",
+    "name": "Nav",
+    "body": [
+      {
+        "type": "nav",
+        "body": [
+          {
+            "type": "ul",
+            "classes": [
+              "list-none",
+              "rune-nav",
+              "flex",
+              "flex-row",
+              "flex-wrap",
+              "content-start",
+              "items-stretch",
+              "justify-center",
+              "justify-items-center",
+              "h-20"
+            ],
+            "body": [
+              {
+                "type": "Component.Children"
+              }
+            ]
           }
         ]
       }
@@ -396,13 +436,10 @@
                 ]
               },
               {
-                "type": "ol",
-                "classes": [
-                  "list-none"
-                ],
+                "type": "StepList",
                 "body": [
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -416,7 +453,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -430,7 +467,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -479,6 +516,13 @@
             "body": [
               "gettingStartedGuide.intro"
             ]
+          },
+          {
+            "type": "NextLink",
+            "href": "/app/services/rune/install",
+            "body": [
+              "gettingStartedGuide.nav.installingRune"
+            ]
           }
         ]
       }
@@ -503,13 +547,10 @@
                 ]
               },
               {
-                "type": "ol",
-                "classes": [
-                  "list-none"
-                ],
+                "type": "StepList",
                 "body": [
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -526,7 +567,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -539,12 +580,11 @@
                         "body": [
                           "pip install -r requirements.txt"
                         ]
-                      },
-                      "\""
+                      }
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -568,6 +608,13 @@
             "type": "Description",
             "body": [
               "gettingStartedGuide.install.details"
+            ]
+          },
+          {
+            "type": "NextLink",
+            "href": "/app/services/rune/firstProject",
+            "body": [
+              "gettingStartedGuide.nav.firstProject"
             ]
           }
         ]
@@ -593,13 +640,10 @@
                 ]
               },
               {
-                "type": "ol",
-                "classes": [
-                  "list-none"
-                ],
+                "type": "StepList",
                 "body": [
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -610,7 +654,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -621,7 +665,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -639,6 +683,13 @@
             "type": "Description",
             "body": [
               "gettingStartedGuide.nextSteps.details"
+            ]
+          },
+          {
+            "type": "NextLink",
+            "href": "/app/services/rune/customComponents",
+            "body": [
+              "gettingStartedGuide.nav.customComponents"
             ]
           }
         ]
@@ -664,13 +715,10 @@
                 ]
               },
               {
-                "type": "ol",
-                "classes": [
-                  "list-none"
-                ],
+                "type": "StepList",
                 "body": [
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -684,7 +732,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -698,7 +746,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -722,6 +770,13 @@
             "type": "Description",
             "body": [
               "gettingStartedGuide.customComponents.details"
+            ]
+          },
+          {
+            "type": "NextLink",
+            "href": "/app/services/rune/multilingualSupport",
+            "body": [
+              "gettingStartedGuide.nav.multilingualSupport"
             ]
           }
         ]
@@ -747,10 +802,10 @@
                 ]
               },
               {
-                "type": "ol",
+                "type": "StepList",
                 "body": [
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -767,7 +822,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -784,7 +839,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -853,6 +908,13 @@
             "body": [
               "gettingStartedGuide.firstProject.details"
             ]
+          },
+          {
+            "type": "NextLink",
+            "href": "/app/services/rune/basics",
+            "body": [
+              "gettingStartedGuide.nav.understandingBasics"
+            ]
           }
         ]
       }
@@ -877,13 +939,10 @@
                 ]
               },
               {
-                "type": "ol",
-                "classes": [
-                  "list-none"
-                ],
+                "type": "StepList",
                 "body": [
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -897,7 +956,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -914,7 +973,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -983,6 +1042,13 @@
             "body": [
               "gettingStartedGuide.basics.details"
             ]
+          },
+          {
+            "type": "NextLink",
+            "href": "/app/services/rune/nextSteps",
+            "body": [
+              "gettingStartedGuide.nav.nextSteps"
+            ]
           }
         ]
       }
@@ -1007,13 +1073,10 @@
                 ]
               },
               {
-                "type": "ol",
-                "classes": [
-                  "list-none"
-                ],
+                "type": "StepList",
                 "body": [
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -1027,7 +1090,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -1041,7 +1104,7 @@
                     ]
                   },
                   {
-                    "type": "li",
+                    "type": "Step",
                     "body": [
                       {
                         "type": "T",
@@ -1066,6 +1129,13 @@
             "body": [
               "gettingStartedGuide.multilingualSupport.details"
             ]
+          },
+          {
+            "type": "NextLink",
+            "href": "/app/services/rune/assetHandling",
+            "body": [
+              "gettingStartedGuide.nav.assetHandling"
+            ]
           }
         ]
       }
@@ -1075,19 +1145,6 @@
     "type": "Component",
     "name": "FirstProjectExampleHTML",
     "body": [
-      {
-        "type": "p",
-        "body": [
-          "File",
-          {
-            "type": "code",
-            "body": [
-              "HelloPage.html"
-            ]
-          },
-          ":"
-        ]
-      },
       {
         "type": "pre",
         "body": [
@@ -1105,22 +1162,9 @@
     ]
   },
   {
-    "type": "View",
-    "name": "FirstProjectExampleYAML.COmponent",
+    "type": "Component",
+    "name": "FirstProjectExampleYAML",
     "body": [
-      {
-        "type": "p",
-        "body": [
-          "File",
-          {
-            "type": "code",
-            "body": [
-              "HelloPage.yaml"
-            ]
-          },
-          ":"
-        ]
-      },
       {
         "type": "pre",
         "body": [
@@ -1142,13 +1186,15 @@
     "name": "AssetHandlingExampleOutputJSON",
     "body": [
       {
-        "type": "p",
+        "type": "pre",
         "body": [
-          "{\n\"type\": \"View\",\n\"name\": \"ExampleView\",\n\"body\": [\n{\n\"type\": \"img\",\n\"src\": \"data:image/png;base64,",
           {
-            "type": "Base64-Encoded",
+            "type": "code",
+            "classes": [
+              "language-json"
+            ],
             "body": [
-              ",\nalt: Company Logo\n}\n]\n}"
+              "{\n  \"type\": \"View\",\n  \"name\": \"ExampleView\",\n  \"body\": [\n    {\n      \"type\": \"img\",\n      \"src\": \"data:image/png;base64,<Base64-Encoded Data>\",\n      \"alt\": \"Company Logo\"\n    }\n  ]\n}"
             ]
           }
         ]
@@ -1159,19 +1205,6 @@
     "type": "Component",
     "name": "BasicsExampleYAML",
     "body": [
-      {
-        "type": "p",
-        "body": [
-          "File",
-          {
-            "type": "code",
-            "body": [
-              "ExamplePage.yml"
-            ]
-          },
-          ":"
-        ]
-      },
       {
         "type": "pre",
         "body": [
@@ -1193,19 +1226,6 @@
     "name": "BasicsExampleMarkdown",
     "body": [
       {
-        "type": "p",
-        "body": [
-          "File",
-          {
-            "type": "code",
-            "body": [
-              "ExamplePage.md"
-            ]
-          },
-          ":"
-        ]
-      },
-      {
         "type": "pre",
         "body": [
           {
@@ -1226,19 +1246,6 @@
     "name": "CustomComponentsExampleViewHTML",
     "body": [
       {
-        "type": "p",
-        "body": [
-          "File",
-          {
-            "type": "code",
-            "body": [
-              "ButtonPage.html"
-            ]
-          },
-          ":"
-        ]
-      },
-      {
         "type": "pre",
         "body": [
           {
@@ -1258,19 +1265,6 @@
     "type": "Component",
     "name": "BasicsExampleHTML",
     "body": [
-      {
-        "type": "p",
-        "body": [
-          "File",
-          {
-            "type": "code",
-            "body": [
-              "ExamplePage.html"
-            ]
-          },
-          ":"
-        ]
-      },
       {
         "type": "pre",
         "body": [
@@ -1352,19 +1346,6 @@
     "name": "FirstProjectExampleMD",
     "body": [
       {
-        "type": "p",
-        "body": [
-          "File",
-          {
-            "type": "code",
-            "body": [
-              "HelloPage.md"
-            ]
-          },
-          ":"
-        ]
-      },
-      {
         "type": "pre",
         "body": [
           {
@@ -1384,19 +1365,6 @@
     "type": "Component",
     "name": "CustomComponentsExampleComponentHTML",
     "body": [
-      {
-        "type": "p",
-        "body": [
-          "File",
-          {
-            "type": "code",
-            "body": [
-              "Button.html"
-            ]
-          },
-          ":"
-        ]
-      },
       {
         "type": "pre",
         "body": [
@@ -1425,6 +1393,9 @@
         "gettingStartedGuide.nav.understandingBasics": "Basics",
         "gettingStartedGuide.nav.customComponents": "Custom Components",
         "gettingStartedGuide.nav.nextSteps": "Next Steps",
+        "gettingStartedGuide.nav.multilingualSupport": "Multilingual Support",
+        "gettingStartedGuide.nav.assetHandling": "Handling Assets and Embedded Content",
+        "gettingStartedGuide.next": "> Next ",
         "gettingStartedGuide.install.title": "Installing Rune",
         "gettingStartedGuide.install.introduction": "Rune is a lightweight, Python-based tool designed to combine content from various formats into a single JSON output for seamless delivery through REST APIs. Follow these steps to install Rune:",
         "gettingStartedGuide.install.step1": "<strong>Step 1:</strong> Clone the Rune repository from <a href='https://github.com/hyperifyio/rune'>GitHub</a>. Run this command in your terminal:",
@@ -1441,12 +1412,12 @@
         "gettingStartedGuide.firstProject.details": "Rune enables you to create reusable components that integrate translations, assets, and dynamic views effortlessly. This is the foundation for building advanced projects.",
         "gettingStartedGuide.basics.title": "Understanding the Basics",
         "gettingStartedGuide.basics.introduction": "Rune's intuitive design helps you manage content effectively. Follow these steps to understand the basics:",
-        "gettingStartedGuide.basics.step1": "<strong>Step 1:</strong> Define your views using familiar formats like HTML, Markdown or YAML:",
+        "gettingStartedGuide.basics.step1": "<strong>Step 1:</strong> Define your view using familiar formats like HTML, Markdown or YAML:",
         "gettingStartedGuide.basics.step2": "<strong>Step 2:</strong> Organize your project structure to manage views, translations, and assets efficiently:",
         "gettingStartedGuide.basics.step3": "<strong>Step 3:</strong> Run Rune to generate a JSON output from your project:",
         "gettingStartedGuide.basics.example.title": "Example: Basic View Definition",
-        "gettingStartedGuide.basics.example.description": "This example illustrates a basic view definition in Rune. Switch between formats using the tabs below:",
-        "gettingStartedGuide.basics.details": "Rune's modular design allows you to work with content in a structured, reusable way, making it ideal for collaborative and scalable projects.",
+        "gettingStartedGuide.basics.example.description": "This example illustrates a basic view definition in Rune. Switch between formats:",
+        "gettingStartedGuide.basics.details": "You may name your files as you wish, except for Markdown, which must use the tag name. By default, Markdown files are parsed as Views. You may use Example.Component.md format to define components.\n\n\nRune's modular design allows you to work with content in a structured, reusable way, making it ideal for collaborative and scalable projects.",
         "gettingStartedGuide.nextSteps.title": "Next Steps",
         "gettingStartedGuide.nextSteps.introduction": "You've completed the basics of Rune! Here are some advanced features to explore next:",
         "gettingStartedGuide.nextSteps.step1": "<strong>Step 1:</strong> Learn how to define <a href='/app/services/rune/customComponents'>custom components</a> to create reusable building blocks.",
@@ -1455,19 +1426,19 @@
         "gettingStartedGuide.nextSteps.details": "Rune adapts to your project's needs. From dynamic views to efficient asset handling, Rune scales with your ambitions. Keep experimenting and integrating Rune into your workflow!",
         "gettingStartedGuide.customComponents.title": "Defining and Using Custom Components",
         "gettingStartedGuide.customComponents.introduction": "Custom components in Rune allow you to define reusable elements with parameters and children, keeping your project modular and reducing duplication.",
-        "gettingStartedGuide.customComponents.step1": "<strong>Step 1:</strong> Define a component with parameters using the <code>Component</code> tag. For example:",
+        "gettingStartedGuide.customComponents.step1": "<strong>Step 1:</strong> Define a component with parameters using the Component tag. For example:",
         "gettingStartedGuide.customComponents.step2": "<strong>Step 2:</strong> Use the component in your views by passing parameters. For example:",
         "gettingStartedGuide.customComponents.step3": "<strong>Step 3:</strong> Process your project with Rune to include the custom component:",
         "gettingStartedGuide.customComponents.details": "Custom components are a cornerstone of Rune's flexibility. They allow you to build modular, reusable elements for efficient and maintainable projects.",
         "gettingStartedGuide.multilingualSupport.title": "Multilingual Support",
         "gettingStartedGuide.multilingualSupport.introduction": "Rune enables you to seamlessly integrate translations into your projects, making multilingual support straightforward. Follow these steps to add translations:",
-        "gettingStartedGuide.multilingualSupport.step1": "<strong>Step 1:</strong> Create a translation file for your project. For example, a JSON file named <code>example.en.json</code>:",
+        "gettingStartedGuide.multilingualSupport.step1": "<strong>Step 1:</strong> Create a translation file for your project. For example, a JSON file named example.en.json:",
         "gettingStartedGuide.multilingualSupport.step2": "<strong>Step 2:</strong> Reference your translation keys in views to dynamically display localized content:",
         "gettingStartedGuide.multilingualSupport.step3": "<strong>Step 3:</strong> Run Rune to merge your translations with your project, producing a JSON output that includes all localized content:",
         "gettingStartedGuide.multilingualSupport.details": "Rune's multilingual support simplifies localization by centralizing translations in JSON files. This ensures your projects are accessible to a global audience with minimal effort.",
         "gettingStartedGuide.assetHandling.title": "Handling Assets and Embedded Content",
         "gettingStartedGuide.assetHandling.introduction": "Rune simplifies asset management by embedding referenced files as base64-encoded data URLs. This ensures assets like images or downloadable content are self-contained within the JSON output. Follow these steps:",
-        "gettingStartedGuide.assetHandling.step1": "<strong>Step 1:</strong> Reference an asset in your views using a <code>src</code> attribute. For example:",
+        "gettingStartedGuide.assetHandling.step1": "<strong>Step 1:</strong> Reference an asset in your views using a src attribute. For example:",
         "gettingStartedGuide.assetHandling.step2": "<strong>Step 2:</strong> Rune automatically converts referenced files into base64-encoded data URLs and embeds them in the JSON output. The result will look like this:",
         "gettingStartedGuide.assetHandling.step3": "<strong>Step 3:</strong> Run Rune to process your project and embed all referenced assets into the final JSON output:",
         "gettingStartedGuide.assetHandling.details": "Rune's asset embedding ensures that all required files are included in the JSON output, making your project portable and secure. By embedding assets as base64-encoded data URLs, Rune eliminates external dependencies and improves reliability."
@@ -1481,6 +1452,8 @@
         "gettingStartedGuide.nav.understandingBasics": "Perusteet",
         "gettingStartedGuide.nav.customComponents": "Mukautetut komponentit",
         "gettingStartedGuide.nav.nextSteps": "Seuraavat askeleet",
+        "gettingStartedGuide.nav.multilingualSupport": "Kielituki",
+        "gettingStartedGuide.next": "> Seuraavaksi ",
         "gettingStartedGuide.install.title": "Runen asentaminen",
         "gettingStartedGuide.install.introduction": "Rune on kevyt, Python-pohjainen ty\u00f6kalu, joka yhdist\u00e4\u00e4 sis\u00e4ll\u00f6n eri formaateista yhdeksi JSON-tulosteeksi, joka voidaan helposti toimittaa REST API:n kautta. Noudata n\u00e4it\u00e4 ohjeita asentaaksesi Runen:",
         "gettingStartedGuide.install.step1": "<strong>Vaihe 1:</strong> Kloonaa Rune-repositorio osoitteesta <a href='https://github.com/hyperifyio/rune'>GitHub</a>. Suorita t\u00e4m\u00e4 komento terminaalissasi:",

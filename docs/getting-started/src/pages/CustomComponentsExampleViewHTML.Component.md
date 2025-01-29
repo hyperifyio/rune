@@ -1,5 +1,3 @@
-File `ButtonPage.html`:
-
 ```html
 <View name="ButtonPage">
   <div>

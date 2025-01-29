@@ -1,5 +1,3 @@
-File `ExamplePage.md`:
-
 ```md
 # Welcome to Rune
 

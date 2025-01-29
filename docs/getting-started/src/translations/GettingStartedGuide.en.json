@@ -8,6 +8,10 @@
   "gettingStartedGuide.nav.understandingBasics": "Basics",
   "gettingStartedGuide.nav.customComponents": "Custom Components",
   "gettingStartedGuide.nav.nextSteps": "Next Steps",
+  "gettingStartedGuide.nav.multilingualSupport": "Multilingual Support",
+  "gettingStartedGuide.nav.assetHandling": "Handling Assets and Embedded Content",
+
+  "gettingStartedGuide.next": "> Next ",
 
   "gettingStartedGuide.install.title": "Installing Rune",
   "gettingStartedGuide.install.introduction": "Rune is a lightweight, Python-based tool designed to combine content from various formats into a single JSON output for seamless delivery through REST APIs. Follow these steps to install Rune:",
@@ -27,12 +31,12 @@
 
   "gettingStartedGuide.basics.title": "Understanding the Basics",
   "gettingStartedGuide.basics.introduction": "Rune's intuitive design helps you manage content effectively. Follow these steps to understand the basics:",
-  "gettingStartedGuide.basics.step1": "<strong>Step 1:</strong> Define your views using familiar formats like HTML, Markdown or YAML:",
+  "gettingStartedGuide.basics.step1": "<strong>Step 1:</strong> Define your view using familiar formats like HTML, Markdown or YAML:",
   "gettingStartedGuide.basics.step2": "<strong>Step 2:</strong> Organize your project structure to manage views, translations, and assets efficiently:",
   "gettingStartedGuide.basics.step3": "<strong>Step 3:</strong> Run Rune to generate a JSON output from your project:",
   "gettingStartedGuide.basics.example.title": "Example: Basic View Definition",
-  "gettingStartedGuide.basics.example.description": "This example illustrates a basic view definition in Rune. Switch between formats using the tabs below:",
-  "gettingStartedGuide.basics.details": "Rune's modular design allows you to work with content in a structured, reusable way, making it ideal for collaborative and scalable projects.",
+  "gettingStartedGuide.basics.example.description": "This example illustrates a basic view definition in Rune. Switch between formats:",
+  "gettingStartedGuide.basics.details": "You may name your files as you wish, except for Markdown, which must use the tag name. By default, Markdown files are parsed as Views. You may use Example.Component.md format to define components.\n\n\nRune's modular design allows you to work with content in a structured, reusable way, making it ideal for collaborative and scalable projects.",
 
   "gettingStartedGuide.nextSteps.title": "Next Steps",
   "gettingStartedGuide.nextSteps.introduction": "You've completed the basics of Rune! Here are some advanced features to explore next:",
@@ -43,21 +47,21 @@
 
   "gettingStartedGuide.customComponents.title": "Defining and Using Custom Components",
   "gettingStartedGuide.customComponents.introduction": "Custom components in Rune allow you to define reusable elements with parameters and children, keeping your project modular and reducing duplication.",
-  "gettingStartedGuide.customComponents.step1": "<strong>Step 1:</strong> Define a component with parameters using the <code>Component</code> tag. For example:",
+  "gettingStartedGuide.customComponents.step1": "<strong>Step 1:</strong> Define a component with parameters using the Component tag. For example:",
   "gettingStartedGuide.customComponents.step2": "<strong>Step 2:</strong> Use the component in your views by passing parameters. For example:",
   "gettingStartedGuide.customComponents.step3": "<strong>Step 3:</strong> Process your project with Rune to include the custom component:",
   "gettingStartedGuide.customComponents.details": "Custom components are a cornerstone of Rune's flexibility. They allow you to build modular, reusable elements for efficient and maintainable projects.",
 
   "gettingStartedGuide.multilingualSupport.title": "Multilingual Support",
   "gettingStartedGuide.multilingualSupport.introduction": "Rune enables you to seamlessly integrate translations into your projects, making multilingual support straightforward. Follow these steps to add translations:",
-  "gettingStartedGuide.multilingualSupport.step1": "<strong>Step 1:</strong> Create a translation file for your project. For example, a JSON file named <code>example.en.json</code>:",
+  "gettingStartedGuide.multilingualSupport.step1": "<strong>Step 1:</strong> Create a translation file for your project. For example, a JSON file named example.en.json:",
   "gettingStartedGuide.multilingualSupport.step2": "<strong>Step 2:</strong> Reference your translation keys in views to dynamically display localized content:",
   "gettingStartedGuide.multilingualSupport.step3": "<strong>Step 3:</strong> Run Rune to merge your translations with your project, producing a JSON output that includes all localized content:",
   "gettingStartedGuide.multilingualSupport.details": "Rune's multilingual support simplifies localization by centralizing translations in JSON files. This ensures your projects are accessible to a global audience with minimal effort.",
 
   "gettingStartedGuide.assetHandling.title": "Handling Assets and Embedded Content",
   "gettingStartedGuide.assetHandling.introduction": "Rune simplifies asset management by embedding referenced files as base64-encoded data URLs. This ensures assets like images or downloadable content are self-contained within the JSON output. Follow these steps:",
-  "gettingStartedGuide.assetHandling.step1": "<strong>Step 1:</strong> Reference an asset in your views using a <code>src</code> attribute. For example:",
+  "gettingStartedGuide.assetHandling.step1": "<strong>Step 1:</strong> Reference an asset in your views using a src attribute. For example:",
   "gettingStartedGuide.assetHandling.step2": "<strong>Step 2:</strong> Rune automatically converts referenced files into base64-encoded data URLs and embeds them in the JSON output. The result will look like this:",
   "gettingStartedGuide.assetHandling.step3": "<strong>Step 3:</strong> Run Rune to process your project and embed all referenced assets into the final JSON output:",
   "gettingStartedGuide.assetHandling.details": "Rune's asset embedding ensures that all required files are included in the JSON output, making your project portable and secure. By embedding assets as base64-encoded data URLs, Rune eliminates external dependencies and improves reliability."
