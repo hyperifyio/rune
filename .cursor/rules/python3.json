@@ -1,7 +1,16 @@
+[
 {
     "name": "Use python3 command",
     "description": "Use python3 instead of python command for all Python-related operations",
     "pattern": "python ",
     "replacement": "python3 ",
     "type": "command"
-} 
+},
+{
+    "name": "Allow python3 -m build",
+    "description": "Allow python3 -m build command for package building",
+    "pattern": "python3 -m build",
+    "replacement": "python3 -m build",
+    "type": "command"
+}
+] 
