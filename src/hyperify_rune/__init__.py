@@ -239,6 +239,7 @@ def markdown_to_data_structure(file_path: str, is_component: bool) -> Dict[str, 
 # Process Markdown files
 def merge_markdown_files(markdown_files: List[str]) -> List[Dict[str, Any]]:
     merged_data = []
+    has_errors = False
     for file in markdown_files:
         try:
             file_dir = os.path.dirname(file)
@@ -248,6 +249,9 @@ def merge_markdown_files(markdown_files: List[str]) -> List[Dict[str, Any]]:
             merged_data.append(data)
         except Exception as e:
             print(f"Error: Failed to process Markdown file '{file}': {e}", file=sys.stderr)
+            has_errors = True
+    if has_errors:
+        sys.exit(1)
     return merged_data
 
 
@@ -351,6 +355,7 @@ def merge_tsx_files(tsx_files: List[str]) -> List[Dict[str, Any]]:
     Parse TSX files and convert them to a structured data format for components or views.
     """
     merged_data = []
+    has_errors = False
     for file in tsx_files:
         try:
             with open(file, 'r') as f:
@@ -381,6 +386,9 @@ def merge_tsx_files(tsx_files: List[str]) -> List[Dict[str, Any]]:
                 merged_data.append(result)
         except Exception as e:
             print(f"Error: Failed to process TSX file '{file}': {e}", file=sys.stderr)
+            has_errors = True
+    if has_errors:
+        sys.exit(1)
     return merged_data
 
 
@@ -393,7 +401,7 @@ def process_files(directory: str, output_type: str, language_dir: str):
 
     if not yaml_files and not html_files and not markdown_files and not tsx_files:
         print(f"No .yml, .html, .md, or .tsx files found in the directory: {directory}", file=sys.stderr)
-        return
+        sys.exit(1)
 
     try:
         if os.path.isdir(language_dir):
@@ -434,6 +442,8 @@ def process_files(directory: str, output_type: str, language_dir: str):
             print(yaml.dump(merged_data, default_flow_style=False))
         else:
             print(f"Unsupported output type: '{output_type}'. Please use 'json' or 'yml'.", file=sys.stderr)
+            sys.exit(1)
 
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
