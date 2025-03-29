@@ -384,7 +384,7 @@ def merge_tsx_files(tsx_files: List[str]) -> List[Dict[str, Any]]:
     return merged_data
 
 
-def main(directory: str, output_type: str, language_dir: str):
+def process_files(directory: str, output_type: str, language_dir: str):
     # Get all files with respective extensions
     yaml_files = get_all_files_with_extension(directory, '.yml')
     html_files = get_all_files_with_extension(directory, '.html')

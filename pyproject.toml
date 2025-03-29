@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "hyperify-rune"
-version = "0.1.3"
+version = "0.1.4"
 authors = [
   { name="Hyperify", email="info@hyperify.io" },
 ]
