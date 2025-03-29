@@ -86,7 +86,13 @@ To use Rune, ensure you have the following installed:
 
 ### Installation
 
-Clone the Rune repository:
+You can install Rune using pip:
+
+```bash
+pip install hyperify-rune
+```
+
+Or clone the repository for development:
 
 ```bash
 git clone https://github.com/hyperifyio/rune.git
@@ -97,7 +103,20 @@ cd rune
 
 ### Usage
 
-#### **1. Prepare Your Project Directory**
+#### **1. Using the Command Line Tool**
+
+After installing with pip, you can use the `rune` command directly:
+
+```bash
+rune <directory> <output_type>
+```
+
+For example:
+```bash
+rune views json
+```
+
+#### **2. Prepare Your Project Directory**
 
 Structure your project directory as follows:
 
@@ -110,7 +129,7 @@ project/                 # Contains YAML and HTML files
 └── Makefile             # Makefile for build automation. Optional, for easier rebuild.
 ```
 
-#### **2. Add YAML or HTML Views**
+#### **3. Add YAML or HTML Views**
 
 Example YAML file (`views/HelloWorld.yml`):
 
@@ -141,7 +160,7 @@ Example HTML file (`views/HelloWorld.html`):
 </View>
 ```
 
-#### **3. Add Translations**
+#### **4. Add Translations**
 
 Create translation files in `translations/` (e.g., `HelloWorld.en.json`):
 
@@ -152,7 +171,7 @@ Create translation files in `translations/` (e.g., `HelloWorld.en.json`):
 }
 ```
 
-#### **4. Build the Project**
+#### **5. Build the Project**
 
 Run Rune to merge all YAML, HTML, and translation files into a single JSON:
 

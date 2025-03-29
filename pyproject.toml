@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "rune"
-version = "0.1.0"
+name = "hyperify-rune"
+version = "0.1.1"
 authors = [
   { name="Hyperify", email="info@hyperify.io" },
 ]
@@ -19,4 +19,10 @@ classifiers = [
 
 [project.urls]
 "Homepage" = "https://github.com/hyperifyio/rune"
-"Bug Tracker" = "https://github.com/hyperifyio/rune/issues" 
+"Bug Tracker" = "https://github.com/hyperifyio/rune/issues"
+
+[project.scripts]
+rune = "hyperify_rune.__init__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hyperify_rune"] 
