@@ -29,7 +29,7 @@ classifiers = [
 "Bug Tracker" = "https://github.com/hyperifyio/rune/issues"
 
 [project.scripts]
-rune = "hyperify_rune.__init__:main"
+rune = "hyperify_rune.__main__:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/hyperify_rune"] 
