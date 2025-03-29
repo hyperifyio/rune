@@ -1,0 +1,7 @@
+{
+    "name": "Use python3 command",
+    "description": "Use python3 instead of python command for all Python-related operations",
+    "pattern": "python ",
+    "replacement": "python3 ",
+    "type": "command"
+} 
