@@ -384,9 +384,7 @@ def merge_tsx_files(tsx_files: List[str]) -> List[Dict[str, Any]]:
     return merged_data
 
 
-# Merge all YAML files in a directory into a single array and print it as JSON or YAML
 def main(directory: str, output_type: str, language_dir: str):
-
     # Get all files with respective extensions
     yaml_files = get_all_files_with_extension(directory, '.yml')
     html_files = get_all_files_with_extension(directory, '.html')
@@ -398,7 +396,6 @@ def main(directory: str, output_type: str, language_dir: str):
         return
 
     try:
-
         if os.path.isdir(language_dir):
             translations = get_all_translations(language_dir)
         else:
@@ -440,13 +437,3 @@ def main(directory: str, output_type: str, language_dir: str):
 
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
-
-
-if __name__ == "__main__":
-
-    parser = argparse.ArgumentParser(description="Merge all YAML files in a directory into a single array and print it as JSON or YAML.")
-    parser.add_argument("directory", type=str, help="Directory containing the YAML files to merge.")
-    parser.add_argument("output_type", type=str, choices=['json', 'yml'], help="Output format: 'json' or 'yml'.")
-    args = parser.parse_args()
-    
-    main(args.directory, args.output_type, os.path.join(args.directory, "translations"))
