@@ -14,6 +14,7 @@ class RuneConfig:
 
     def __init__(self) -> None:
         self.assetsPrefix: Optional[str] = None
+        self.assetsDir: Optional[str] = None
 
 
 # Singleton config used across the package
