@@ -252,6 +252,24 @@ Example HTML (`views/Example.html`):
 
 ## CLI Options
 
+### Optional flags
+
+- --assets-dir PATH: Save extracted attachments to PATH. When unset, attachments remain embedded as data-URLs (default).
+- --assets-prefix PREFIX: Rewrite asset URLs in the output to start with PREFIX (useful when assets are served from a CDN or static host).
+
+CLI flags override configuration values when both are provided.
+
+Examples:
+
+```bash
+rune --assets-dir out/assets views json
+```
+
+```bash
+rune --assets-prefix /static/assets views json
+```
+
+
 ```bash
 python3 rune.py <directory> <output_type>
 ```
