@@ -28,6 +28,14 @@ def create_parser() -> argparse.ArgumentParser:
         choices=["json", "yml"],
         help="Output format: 'json' or 'yml'.",
     )
+    
+    parser.add_argument(
+        "--assets-dir",
+        dest="assets_dir",
+        type=str,
+        default=None,
+        help="Directory to write extracted assets; default embeds as data URLs.",
+    )
     parser.add_argument(
         "--assets-prefix",
         dest="assets_prefix",
@@ -45,6 +53,7 @@ def main():
 
         # Update global configuration from CLI flags
         rune_config.assetsPrefix = args.assets_prefix if args.assets_prefix else None
+        rune_config.assetsDir = args.assets_dir if getattr(args, "assets_dir", None) else None
 
         process_files(
             args.directory,
