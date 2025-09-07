@@ -1,0 +1,35 @@
+name: Build package
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install hatch
+        run: pip install hatch
+
+      - name: Build sdist and wheel
+        run: hatch build -t sdist -t wheel
+
+      - name: Verify artifacts exist
+        run: ls -l dist/*.whl dist/*.tar.gz
+
+      - name: Upload dist artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
